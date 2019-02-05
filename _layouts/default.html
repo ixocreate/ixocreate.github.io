@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: "en-US" }}">
+<html>
   <head>
-
     {% if site.google_analytics %}
       <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
       <script>
@@ -36,9 +35,7 @@
 
 <div class="con">
     <div class="menu">
-      halo
       <ul>
-        Hallo
         {% for item in site.menus.header %}
         <li class="menu-item-{{ loop.index }}">
           <a href="{{ item.url }}" title="Go to {{ item.title }}">{{ item.title }}</a>
