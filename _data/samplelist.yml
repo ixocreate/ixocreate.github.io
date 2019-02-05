@@ -1,0 +1,9 @@
+docs_list_title: Getting Started
+docs:
+
+  - title: Home
+    url: index.html
+
+  - title: Seite
+    url: seite.html
+
