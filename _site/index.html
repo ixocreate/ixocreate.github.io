@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
 
     <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Home</title>
+<title>Install</title>
 <meta name="generator" content="Jekyll v3.7.4" />
-<meta property="og:title" content="Home" />
+<meta property="og:title" content="Install" />
 <meta property="og:locale" content="en_US" />
 <link rel="canonical" href="http://localhost:4000/" />
 <meta property="og:url" content="http://localhost:4000/" />
 <script type="application/ld+json">
-{"@type":"WebSite","url":"http://localhost:4000/","headline":"Home","@context":"http://schema.org"}</script>
+{"@type":"WebSite","url":"http://localhost:4000/","headline":"Install","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,17 +23,19 @@
 <body>
     <header class="page-header" role="banner">
         <h1 class="project-name">Ixocreate</h1>
-        <h2 class="project-tagline">Home</h2>
+        <h2 class="project-tagline">Install</h2>
     </header>
 
     <div class="con">
         <div class="menu">
-            <h2>Getting Started</h2>
+            <h2 class="green">Getting Started</h2>
             <ul>
                 
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html">Install</a></li>
                 
-                <li><a href="seite.html">Seite</a></li>
+                <li><a href="block.html">BlockType</a></li>
+                
+                <li><a href="page.html">PageType</a></li>
                 
             </ul>
         </div>
@@ -41,50 +43,53 @@
 
         <div class="main">
             <main id="content" class="main-content" role="main">
-                <h1>Install & Setting up Ixocreate </h1>
+                <h2 class="green"> Install &amp; Setting up Ixocreate </h2>
 
-For install Ixocreate you need PHP 7.1 or higher and have composer installed.</br></br>
+<p>For install Ixocreate you need PHP 7.1 or higher and have composer installed.</p>
 
+<p>Create your new project by running:</p>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> composer create-project <span class="nt">-s</span> dev ixocreate/ixocreate
+</code></pre></div></div>
+<p>After install your project you have to change the permission to executable from the Ixocreate console application.</p>
 
+<p>Use the follow command:</p>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> chmod u+x ixocreate
+</code></pre></div></div>
 
-Create your new project by running:</br>
-        <code>composer create-project -s dev ixocreate/ixocreate</code></br></br>
-After install your project you have to change the permission to executable from the Ixocreate console application.
-
-Use the follow command:</br>
-    <code>chmod u+x ixocreate</code></br></br>
-Now you can use the ixocreate console application by using:</br>
-<code>./ixocreate &lt;command&gt;</code></br></br>
-Next create the project configs in ixocreate/config/local/ by create the files:</br>
+<p>Now you can use the ixocreate console application by using:</p>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> ./ixocreate &lt;<span class="nb">command</span><span class="o">&gt;</span>
+</code></pre></div></div>
+<p>Next create the project configs in ixocreate/config/local/ by create the files:</p>
 <ol>
     <li>project-uri.config.php</li>
     <li>media.config.php</li>
     <li>asset.config.php</li>
 </ol>
-For the database config you can use the command:</br>
-<code>./ixocreate config:generate database</code></br></br>
+<p>For the database config you can use the command:</p>
 
-After generate your configs you have to fill your database -name, -user, password, -host, -driver and -charset in the database.config.php
-file and fill in project-uri.config your correct Url.</br></br>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> ./ixocreate config:generate database
+</code></pre></div></div>
 
+<p>After generate your configs you have to fill your database -name, -user, password, -host, -driver and -charset in the database.config.php
+file and fill in project-uri.config your correct Url.</p>
 
-Next create the folder ixocreate/data/media/</br></br>
+<p>Next create the folder ixocreate/data/media/</p>
 
-
-Now you have to create two symlinks from the public folder to
+<p>Now you have to create two symlinks from the public folder to</p>
 <ol>
     <li>/resources/assets/</li>
     <li>/data/media/</li>
 </ol>
 
+<p>From now you can use the ixocreate console application by run the follow lines:</p>
 
-From now you can use the ixocreate console application by run the follow lines:</br>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> ./ixocreate publish:run
+<span class="gp">$</span> ./ixocreate migration:migrate
+<span class="gp">$</span> ./ixocreate admin:create-user &lt;e-mail&gt; admin
+</code></pre></div></div>
 
-<code>./ixocreate publish:run </code></br>
-<code>./ixocreate migration:migrate </code></br>
-<code>./ixocreate admin:create-user &lt;e-mail&gt; admin </code></br></br>
+<p>You get a generated password and you can login at URL/admin#</p>
 
-You get a generated password and you can login at URL/admin#
             </main>
         </div>
 

@@ -1,9 +1,12 @@
 docs_list_title: Getting Started
 docs:
 
-  - title: Home
+  - title: Install
     url: index.html
 
-  - title: Seite
-    url: seite.html
+  - title: BlockType
+    url: block.html
+
+  - title: PageType
+    url: page.html
 
