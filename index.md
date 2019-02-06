@@ -14,7 +14,10 @@ Create your new project by running:
 $ composer create-project -s dev ixocreate/ixocreate
 ```
 After install your project you have to change the permission to executable from the Ixocreate console application.
-
+Go to the ixocreate folder
+```console
+$ cd ixocreate
+```
 Use the follow command:
 ```console
 $ chmod u+x ixocreate
@@ -25,11 +28,30 @@ Now you can use the ixocreate console application by using:
 $ ./ixocreate <command>
 ```
 Next create the project configs in ixocreate/config/local/ by create the files:
-<ol>
-    <li>project-uri.config.php</li>
-    <li>media.config.php</li>
-    <li>asset.config.php</li>
-</ol>
+
+1.project-uri.config.php
+```php
+<?php
+return [
+    'mainUrl' => 'http://YOUR.URL',
+    'possibleUrls' => [],
+];
+```
+2.media.config.php
+```php
+<?php
+return [
+        'uri' => '/media',
+    ];    
+```
+
+3.asset.config.php
+```php
+<?php
+return [
+    'url' => ['assets']
+];
+```
 For the database config you can use the command:
 
 ```console
@@ -43,12 +65,11 @@ file and fill in project-uri.config your correct Url.
 Next create the folder ixocreate/data/media/
 
 
-Now you have to create two symlinks from the public folder to
-<ol>
-    <li>/resources/assets/</li>
-    <li>/data/media/</li>
-</ol>
-
+Now you have to create two symlinks from the public folder with the follow command:
+```console
+$ ln -s ../resources/assets
+$ ln -s ../data/media
+```
 
 From now you can use the ixocreate console application by run the follow lines:
 

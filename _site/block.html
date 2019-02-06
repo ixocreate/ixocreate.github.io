@@ -37,6 +37,8 @@
                 
                 <li><a href="page.html">PageType</a></li>
                 
+                <li><a href="layout.html">Layout</a></li>
+                
             </ul>
         </div>
 
@@ -47,7 +49,7 @@
 
 <p>The Ixocreate Framework work with PageTypes and they need BlockTypes. Let’s see how they work together.
 First we will create a BlockType:
-Create a new file at /ixolit/src/App/Block with name TextImageBlock.php and fill the code:</p>
+Create a new file at /ixocreate/src/App/Block with name TextImageBlock.php and fill the code:</p>
 
 <div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
 <span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
@@ -111,36 +113,31 @@ Create a new file at /ixolit/src/App/Block with name TextImageBlock.php and fill
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>Next create a new file at /ixolit/src/App/Block with name text.phtml and fill the code:</p>
+<p>Next create a new file at /ixocreate/templates/block with name text-image.phtml and fill the code:</p>
 
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-<span class="nv">$renderContainer</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-<span class="cp">?&gt;</span>
-    <span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"section section-margin"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;div&gt;</span>?= $renderContainer ? ' class="container"' : '' ?&gt;&gt;
-            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row align-items-center justify-content-between"</span><span class="nt">&gt;</span>
-                <span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$image</span><span class="p">))</span><span class="o">:</span> <span class="cp">?&gt;</span>
-                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">" order-first </span><span class="cp">&lt;?=</span> <span class="p">(</span><span class="nv">$imagePosition</span> <span class="o">==</span> <span class="s1">'left'</span><span class="p">)</span> <span class="o">?</span> <span class="s1">'order-md-last'</span> <span class="o">:</span> <span class="s1">'order-md-first text-left text-md-right'</span> <span class="cp">?&gt;</span><span class="s">"</span><span class="nt">&gt;</span>
-                    <span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span>
-                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"wysiwyg-content"</span><span class="nt">&gt;</span>
-                        <span class="cp">&lt;?=</span> <span class="nv">$text</span> <span class="cp">?&gt;</span>
-                    <span class="nt">&lt;/div&gt;</span>
-                    <span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$image</span><span class="p">))</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;section&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row align-items-center justify-content-between"</span><span class="nt">&gt;</span>
+            <span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$image</span><span class="p">))</span><span class="o">:</span> <span class="cp">?&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">" order-first </span><span class="cp">&lt;?=</span> <span class="p">(</span><span class="nv">$imagePosition</span> <span class="o">==</span> <span class="s1">'left'</span><span class="p">)</span> <span class="o">?</span> <span class="s1">'order-md-last'</span> <span class="o">:</span> <span class="s1">'order-md-first text-left text-md-right'</span> <span class="cp">?&gt;</span><span class="s">"</span><span class="nt">&gt;</span>
+                <span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"wysiwyg-content"</span><span class="nt">&gt;</span>
+                    <span class="cp">&lt;?=</span> <span class="nv">$text</span> <span class="cp">?&gt;</span>
                 <span class="nt">&lt;/div&gt;</span>
-                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">" order-last </span><span class="cp">&lt;?=</span> <span class="p">(</span><span class="nv">$imagePosition</span> <span class="o">==</span> <span class="s1">'left'</span><span class="p">)</span> <span class="o">?</span> <span class="s1">'order-md-first'</span> <span class="o">:</span> <span class="s1">'order-md-last'</span> <span class="cp">?&gt;</span><span class="s">"</span><span class="nt">&gt;</span>
-                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"image-container image-rounded"</span><span class="nt">&gt;</span>
-                        <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"</span><span class="cp">&lt;?=</span> <span class="nv">$image</span><span class="o">-&gt;</span><span class="na">getUrl</span><span class="p">(</span><span class="s1">'image'</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="s">"</span> <span class="na">class=</span><span class="s">"img-fluid d-block mx-auto"</span><span class="nt">&gt;</span>
-                    <span class="nt">&lt;/div&gt;</span>
-                    <span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$caption</span><span class="p">))</span><span class="o">:</span> <span class="cp">?&gt;</span>
+                <span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$image</span><span class="p">))</span><span class="o">:</span> <span class="cp">?&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">" order-last </span><span class="cp">&lt;?=</span> <span class="p">(</span><span class="nv">$imagePosition</span> <span class="o">==</span> <span class="s1">'left'</span><span class="p">)</span> <span class="o">?</span> <span class="s1">'order-md-first'</span> <span class="o">:</span> <span class="s1">'order-md-last'</span> <span class="cp">?&gt;</span><span class="s">"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"image-container image-rounded"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"</span><span class="cp">&lt;?=</span> <span class="nv">$image</span><span class="o">-&gt;</span><span class="na">getUrl</span><span class="p">(</span><span class="s1">'image'</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="s">"</span> <span class="na">class=</span><span class="s">"img-fluid d-block mx-auto"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+                <span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$caption</span><span class="p">))</span><span class="o">:</span> <span class="cp">?&gt;</span>
                     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"text-right text-muted text-sm image-caption"</span><span class="nt">&gt;</span>
                         <span class="cp">&lt;?=</span> <span class="nv">$caption</span> <span class="cp">?&gt;</span>
                     <span class="nt">&lt;/div&gt;</span>
-                    <span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span>
-                <span class="nt">&lt;/div&gt;</span>
                 <span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span>
             <span class="nt">&lt;/div&gt;</span>
+        <span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span>
         <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;/section&gt;</span>
+<span class="nt">&lt;/section&gt;</span>
 </code></pre></div></div>
 
             </main>

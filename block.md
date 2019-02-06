@@ -8,7 +8,7 @@ sidebar: header
 
 The Ixocreate Framework work with PageTypes and they need BlockTypes. Let's see how they work together.
 First we will create a BlockType:
-Create a new file at /ixolit/src/App/Block with name TextImageBlock.php and fill the code:
+Create a new file at /ixocreate/src/App/Block with name TextImageBlock.php and fill the code:
 
 ```php
 <?php
@@ -73,35 +73,30 @@ class TextImageBlock implements BlockInterface
 }
 ```
 
-Next create a new file at /ixolit/src/App/Block with name text.phtml and fill the code:
+Next create a new file at /ixocreate/templates/block with name text-image.phtml and fill the code:
 
 ```php
-<?php
-$renderContainer = true;
-?>
-    <section class="section section-margin">
-        <div>?= $renderContainer ? ' class="container"' : '' ?>>
-            <div class="row align-items-center justify-content-between">
-                <?php if (!empty($image)): ?>
-                <div class=" order-first <?= ($imagePosition == 'left') ? 'order-md-last' : 'order-md-first text-left text-md-right' ?>">
-                    <?php endif; ?>
-                    <div class="wysiwyg-content">
-                        <?= $text ?>
-                    </div>
-                    <?php if (!empty($image)): ?>
+<section>
+        <div class="row align-items-center justify-content-between">
+            <?php if (!empty($image)): ?>
+            <div class=" order-first <?= ($imagePosition == 'left') ? 'order-md-last' : 'order-md-first text-left text-md-right' ?>">
+                <?php endif; ?>
+                <div class="wysiwyg-content">
+                    <?= $text ?>
                 </div>
-                <div class=" order-last <?= ($imagePosition == 'left') ? 'order-md-first' : 'order-md-last' ?>">
-                    <div class="image-container image-rounded">
-                        <img src="<?= $image->getUrl('image') ?>" class="img-fluid d-block mx-auto">
-                    </div>
-                    <?php if (!empty($caption)): ?>
+                <?php if (!empty($image)): ?>
+            </div>
+            <div class=" order-last <?= ($imagePosition == 'left') ? 'order-md-first' : 'order-md-last' ?>">
+                <div class="image-container image-rounded">
+                    <img src="<?= $image->getUrl('image') ?>" class="img-fluid d-block mx-auto">
+                </div>
+                <?php if (!empty($caption)): ?>
                     <div class="text-right text-muted text-sm image-caption">
                         <?= $caption ?>
                     </div>
-                    <?php endif; ?>
-                </div>
                 <?php endif; ?>
             </div>
+        <?php endif; ?>
         </div>
-    </section>
+</section>
 ```

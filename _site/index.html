@@ -37,6 +37,8 @@
                 
                 <li><a href="page.html">PageType</a></li>
                 
+                <li><a href="layout.html">Layout</a></li>
+                
             </ul>
         </div>
 
@@ -50,8 +52,10 @@
 <p>Create your new project by running:</p>
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> composer create-project <span class="nt">-s</span> dev ixocreate/ixocreate
 </code></pre></div></div>
-<p>After install your project you have to change the permission to executable from the Ixocreate console application.</p>
-
+<p>After install your project you have to change the permission to executable from the Ixocreate console application.
+Go to the ixocreate folder</p>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> <span class="nb">cd </span>ixocreate
+</code></pre></div></div>
 <p>Use the follow command:</p>
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> chmod u+x ixocreate
 </code></pre></div></div>
@@ -60,11 +64,27 @@
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> ./ixocreate &lt;<span class="nb">command</span><span class="o">&gt;</span>
 </code></pre></div></div>
 <p>Next create the project configs in ixocreate/config/local/ by create the files:</p>
-<ol>
-    <li>project-uri.config.php</li>
-    <li>media.config.php</li>
-    <li>asset.config.php</li>
-</ol>
+
+<p>1.project-uri.config.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="k">return</span> <span class="p">[</span>
+    <span class="s1">'mainUrl'</span> <span class="o">=&gt;</span> <span class="s1">'http://YOUR.URL'</span><span class="p">,</span>
+    <span class="s1">'possibleUrls'</span> <span class="o">=&gt;</span> <span class="p">[],</span>
+<span class="p">];</span>
+</code></pre></div></div>
+<p>2.media.config.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="k">return</span> <span class="p">[</span>
+        <span class="s1">'uri'</span> <span class="o">=&gt;</span> <span class="s1">'/media'</span><span class="p">,</span>
+    <span class="p">];</span>    
+</code></pre></div></div>
+
+<p>3.asset.config.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="k">return</span> <span class="p">[</span>
+    <span class="s1">'url'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'assets'</span><span class="p">]</span>
+<span class="p">];</span>
+</code></pre></div></div>
 <p>For the database config you can use the command:</p>
 
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> ./ixocreate config:generate database
@@ -75,11 +95,10 @@ file and fill in project-uri.config your correct Url.</p>
 
 <p>Next create the folder ixocreate/data/media/</p>
 
-<p>Now you have to create two symlinks from the public folder to</p>
-<ol>
-    <li>/resources/assets/</li>
-    <li>/data/media/</li>
-</ol>
+<p>Now you have to create two symlinks from the public folder with the follow command:</p>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> ln <span class="nt">-s</span> ../resources/assets
+<span class="gp">$</span> ln <span class="nt">-s</span> ../data/media
+</code></pre></div></div>
 
 <p>From now you can use the ixocreate console application by run the follow lines:</p>
 

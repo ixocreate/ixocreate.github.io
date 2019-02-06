@@ -124,4 +124,8 @@ For the images on your website you need an imagedefinition you can create with t
 $ ./ixocreate media:generate-imageDefinition image
 ```
 
+Next step is to edit the imagedefinition at ixolit/src/App/Media/ImageDefinition/Image.php change the high from null to 150.
+
 Now you can login on #admin and can create a new site with a TextImageBlock.
+
+At the moment we don't have a layout let's do it. <a class="green" href="layout.html">Layout</a>

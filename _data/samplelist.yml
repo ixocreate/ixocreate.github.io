@@ -10,3 +10,5 @@ docs:
   - title: PageType
     url: page.html
 
+  - title: Layout
+    url: layout.html

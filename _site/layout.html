@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta charset="UTF-8">
+
+    <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Layout</title>
+<meta name="generator" content="Jekyll v3.7.4" />
+<meta property="og:title" content="Layout" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="http://localhost:4000/layout.html" />
+<meta property="og:url" content="http://localhost:4000/layout.html" />
+<script type="application/ld+json">
+{"@type":"WebPage","url":"http://localhost:4000/layout.html","headline":"Layout","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+</head>
+<body>
+    <header class="page-header" role="banner">
+        <h1 class="project-name">Ixocreate</h1>
+        <h2 class="project-tagline">Layout</h2>
+    </header>
+
+    <div class="con">
+        <div class="menu">
+            <h2 class="green">Getting Started</h2>
+            <ul>
+                
+                <li><a href="index.html">Install</a></li>
+                
+                <li><a href="block.html">BlockType</a></li>
+                
+                <li><a href="page.html">PageType</a></li>
+                
+                <li><a href="layout.html">Layout</a></li>
+                
+            </ul>
+        </div>
+
+
+        <div class="main">
+            <main id="content" class="main-content" role="main">
+                <h2 class="green"> Layout </h2>
+
+<p>For the layout create a new file at /ixocreate/templates/layout with name layout.phtml and fill the code:</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">id=</span><span class="s">"bootstrap-css"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span><span class="cp">&lt;?=</span> <span class="nv">$pageContent</span><span class="o">-&gt;</span><span class="na">name</span> <span class="cp">?&gt;</span><span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;main&gt;</span>
+                <span class="cp">&lt;?=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">section</span><span class="p">(</span><span class="s1">'content'</span><span class="p">);</span> <span class="cp">?&gt;</span>
+            <span class="nt">&lt;/main&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>and edit the file /ixolit/templates/page/home.phtml to</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">layout</span><span class="p">(</span><span class="s1">'layout::layout'</span><span class="p">)</span> <span class="cp">?&gt;</span>
+
+<span class="cp">&lt;?=</span> <span class="nv">$pageContent</span><span class="o">-&gt;</span><span class="na">content</span><span class="p">;</span> <span class="cp">?&gt;</span>
+</code></pre></div></div>
+
+<p>Now you have made your first page with ixocreate.</p>
+
+            </main>
+        </div>
+
+
+    </div>
+
+    </body>
+</html>
