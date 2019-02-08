@@ -2,6 +2,8 @@
 layout: default
 title: PageType
 sidebar: header
+category: getting started
+order: 4
 ---
 <h2 class="green"> {{"PageType"}}</h2>
 

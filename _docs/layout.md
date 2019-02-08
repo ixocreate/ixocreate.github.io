@@ -2,7 +2,10 @@
 layout: default
 title: Layout
 sidebar: header
+category: getting started
+order: 5
 ---
+
 <h2 class="green"> {{"Layout "}}</h2>
 
 For the layout create a new file at /ixocreate/templates/layout with name layout.phtml and fill the code:

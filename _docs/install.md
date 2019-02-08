@@ -1,9 +1,11 @@
 ---
 layout: default
-title: Install
+title: Install & Setting up Icocreate
 sidebar: header
+category: getting started
+order: 2
 ---
-<h2 class="green"> {{"Install & Setting up Ixocreate "}}</h2>
+## Install
 
 For install Ixocreate you need PHP 7.1 or higher and have composer installed.
 
@@ -27,6 +29,8 @@ Now you can use the ixocreate console application by using:
 ```console
 $ ./ixocreate <command>
 ```
+
+## Create the configs
 Next create the project configs in ixocreate/config/local/ by create the files:
 
 1.project-uri.config.php
@@ -61,7 +65,7 @@ $ ./ixocreate config:generate database
 After generate your configs you have to fill your database -name, -user, password, -host, -driver and -charset in the database.config.php
 file and fill in project-uri.config your correct Url.
 
-
+## Creating mediafolders & migrations
 Next create the folder ixocreate/data/media/
 
 
@@ -76,6 +80,12 @@ From now you can use the ixocreate console application by run the follow lines:
 ```console
 $ ./ixocreate publish:run
 $ ./ixocreate migration:migrate
+
+```
+
+## Create Admin
+
+```console
 $ ./ixocreate admin:create-user <e-mail> admin
 ```
 

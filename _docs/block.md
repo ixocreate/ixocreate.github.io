@@ -1,7 +1,9 @@
 ---
 layout: default
-title: BlockType
+title: blocktype
 sidebar: header
+category: getting started
+order: 3
 ---
 <h2 class="green"> {{"BlockType"}}</h2>
 

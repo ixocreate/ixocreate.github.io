@@ -836,5 +836,5 @@ a {
   margin: auto;
   width: 75%; }
 
-h1.green, h2.green, a.green {
-  color: #96DC32; }
+h2, h3, h4 {
+  color: #96DC32 !important; }
