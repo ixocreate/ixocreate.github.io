@@ -1,4 +1,5 @@
 ---
+redirect_from: "/"
 layout: default
 title: About 
 sidebar: header
