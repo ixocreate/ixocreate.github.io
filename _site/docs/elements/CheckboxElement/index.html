@@ -4,18 +4,18 @@
     
     <meta charset="UTF-8">
     <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>elements</title>
+<title>CheckboxElement</title>
 <meta name="generator" content="Jekyll v3.7.4" />
-<meta property="og:title" content="elements" />
+<meta property="og:title" content="CheckboxElement" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Elements" />
-<meta property="og:description" content="Elements" />
-<link rel="canonical" href="http://localhost:4000/docs/guide-elements/" />
-<meta property="og:url" content="http://localhost:4000/docs/guide-elements/" />
+<meta name="description" content="CheckboxElement" />
+<meta property="og:description" content="CheckboxElement" />
+<link rel="canonical" href="http://localhost:4000/docs/elements/CheckboxElement/" />
+<meta property="og:url" content="http://localhost:4000/docs/elements/CheckboxElement/" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2019-02-11T10:25:23+01:00" />
 <script type="application/ld+json">
-{"description":"Elements","@type":"BlogPosting","url":"http://localhost:4000/docs/guide-elements/","headline":"elements","dateModified":"2019-02-11T10:25:23+01:00","datePublished":"2019-02-11T10:25:23+01:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/docs/guide-elements/"},"@context":"http://schema.org"}</script>
+{"description":"CheckboxElement","@type":"BlogPosting","url":"http://localhost:4000/docs/elements/CheckboxElement/","headline":"CheckboxElement","dateModified":"2019-02-11T10:25:23+01:00","datePublished":"2019-02-11T10:25:23+01:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/docs/elements/CheckboxElement/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -43,6 +43,8 @@
                     <a href="/docs/index/"><h3>About</h3></a>
                     
                     
+                    
+                    
                         
                     
                         
@@ -100,8 +102,6 @@
                         
                     
                         
-                    
-                    
                     
                 
                 </ul>
@@ -115,6 +115,8 @@
                     <a href="/docs/install/"><h3>Install & setting up icocreate</h3></a>
                     
                     
+                    
+                    
                         
                     
                         
@@ -172,13 +174,13 @@
                         
                     
                         
-                    
-                    
                     
                 
                     <a href="/docs/block/"><h3>Blocktype</h3></a>
                     
                     
+                    
+                    
                         
                     
                         
@@ -236,13 +238,13 @@
                         
                     
                         
-                    
-                    
                     
                 
                     <a href="/docs/page/"><h3>Pagetype</h3></a>
                     
                     
+                    
+                    
                         
                     
                         
@@ -300,13 +302,13 @@
                         
                     
                         
-                    
-                    
                     
                 
                     <a href="/docs/layout/"><h3>Layout</h3></a>
                     
                     
+                    
+                    
                         
                     
                         
@@ -364,8 +366,6 @@
                         
                     
                         
-                    
-                    
                     
                 
                 </ul>
@@ -379,6 +379,8 @@
                     <a href="/docs/guide-block-type/"><h3>Blocktype</h3></a>
                     
                     
+                    
+                    
                         
                     
                         
@@ -436,13 +438,13 @@
                         
                     
                         
-                    
-                    
                     
                 
                     <a href="/docs/guide-page-type/"><h3>Pagetype</h3></a>
                     
                     
+                    
+                    
                         
                     
                         
@@ -500,11 +502,11 @@
                         
                     
                         
-                    
-                    
                     
                 
                     <a href="/docs/guide-elements/"><h3>Elements</h3></a>
+                    
+                    
                     
                     
                         
@@ -623,8 +625,6 @@
                             <ul><a href="/docs/elements/YouTubeElement/">YouTubeElement</a></br></ul>
                         
                     
-                    
-                    
                 
                 </ul>
             
@@ -635,9 +635,41 @@
     </div>
     <div class="main">
         <main id="content" class="main-content" role="main">
-            <h2 id="elements">Elements</h2>
+            <h2 id="checkboxelement">CheckboxElement</h2>
 
-<p>Eine allgemeine Beschreibung über Elemente.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="cp">&lt;?php</span>
+<span class="sd">/**
+ * @link https://github.com/ixocreate
+ * @copyright IXOCREATE GmbH
+ * @license MIT License
+ */</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">namespace</span> <span class="nx">Ixocreate\Schema\Elements</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Ixocreate\Contract\Type\TypeInterface</span><span class="p">;</span>
+
+<span class="k">final</span> <span class="k">class</span> <span class="nc">CheckboxElement</span> <span class="k">extends</span> <span class="nx">AbstractSingleElement</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">type</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">TypeInterface</span><span class="o">::</span><span class="na">TYPE_BOOL</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">inputType</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">'checkbox'</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">serviceName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">'checkbox'</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
 
         </main>
     </div>

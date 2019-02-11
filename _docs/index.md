@@ -15,5 +15,5 @@ Ixocreate is a powerful tool to build your own dynamic website very fast and eas
 
 If you are familiar with PHP and have ten minutes time. Will you be surprised.
 
-The ixocreate have two fundamental things <a class="green" href="guide-page-type.html">PageType</a> and  <a href="guide-block-type.html">BlockType</a>
+The ixocreate have two fundamental things <a href="/docs/guide-page-type/">PageType</a> and  <a href="/docs/guide-block-type">BlockType</a>
 

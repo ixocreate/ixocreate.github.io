@@ -36,17 +36,17 @@
                 <ul>
                 {% assign items = item.items | sort: 'order' %}
                 {% for item in items %}
-                    <li><a href="{{ item.url }}">{{ item.title | capitalize }}</a></li>
+                    <a href="{{ item.url }}"><h3>{{ item.title | capitalize }}</h3></a>
                     {% assign test = site.docs | where: 'category',page.title %}
                     {% for a in test %}
                         {% if item.title == page.title %}
-                            <ul><li><a href="{{ a.url }}">{{ a.title }}</a></li></ul>
+                            <ul><a href="{{ a.url }}">{{ a.title }}</a></br></ul>
                         {% endif %}
                     {% endfor %}
                     {% assign testb = site.docs | where: 'category',navigation %}
                     {% for b in testb %}
                         {% if item.title == navigation %}
-                            <ul><li><a href="{{ b.url }}">{{ b.title }}</a></li></ul>
+                            <ul><a href="{{ b.url }}">{{ b.title }}</a></br></ul>
                         {% endif %}
                     {% endfor %}
                 {% endfor %}

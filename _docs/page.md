@@ -130,4 +130,4 @@ Next step is to edit the imagedefinition at ixolit/src/App/Media/ImageDefinition
 
 Now you can login on #admin and can create a new site with a TextImageBlock.
 
-At the moment we don't have a layout let's do it. <a class="green" href="layout.html">Layout</a>
+At the moment we don't have a layout let's do it. <a class="green" href="/docs/layout">Layout</a>
