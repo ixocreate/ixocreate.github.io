@@ -1,0 +1,51 @@
+.alert-white {
+  @include gradient-y(#fff, #f9f9f9);
+
+  position: relative;
+  width: 100%;
+  padding-left: 61px;
+  color: $body-color;
+  border-color: $border-color;
+
+  .icon {
+    @include border-radius($border-radius 0 0 $border-radius);
+
+    font-size: 20px;
+    display: flex;
+    position: absolute;
+    top: -1px;
+    bottom: -1px;
+    left: -1px;
+    width: 45px;
+    text-align: center;
+    color: #fff;
+    border: 1px solid $border-color;
+    background: $border-color;
+
+    justify-content: center;
+    align-items: center;
+
+    &:after {
+      display: block;
+      position: absolute;
+      top: 50%;
+      right: -6px;
+      width: 10px;
+      height: 10px;
+      margin-top: -4px;
+      content: ' ';
+      transform: rotate(45deg);
+      border: 0;
+      border-right: 1px solid $border-color;
+      background: $border-color;
+    }
+  }
+
+  @each $color, $value in $theme-colors {
+    &.alert-#{$color} .icon,
+    &.alert-#{$color} .icon:after {
+      border-color: darken($value, 5%);
+      background: $value;
+    }
+  }
+}

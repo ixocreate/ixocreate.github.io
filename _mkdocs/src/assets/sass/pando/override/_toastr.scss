@@ -1,0 +1,76 @@
+#toast-container {
+  & > div {
+    @include opacity(.92);
+
+    padding: 15px 30px 19px 50px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, .3);
+
+    &:hover {
+      @include opacity(1);
+
+      box-shadow: 0 0 10px rgba(0, 0, 0, .4);
+    }
+  }
+
+  & > .toast {
+    background-image: none !important;
+  }
+
+  button.toast-close-button {
+    position: absolute;
+    top: 12px;
+    right: 5px;
+    padding: 0 5px;
+    text-shadow: none;
+
+    &:focus,
+    &:active {
+      outline: 0;
+    }
+  }
+
+  & > .toast:before {
+    font-family: 'Font Awesome 5 Free';
+    font-size: 24px;
+    line-height: 24px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 50px;
+    margin-top: -12px;
+    text-align: center;
+    color: #fff;
+  }
+
+  & > .toast-warning:before {
+    content: fa-content($fa-var-comment);
+  }
+  & > .toast-error:before {
+    font-weight: bold;
+    content: fa-content($fa-var-exclamation-triangle);
+  }
+  & > .toast-info:before {
+    font-weight: bold;
+    content: fa-content($fa-var-info);
+  }
+  & > .toast-success:before {
+    font-weight: bold;
+    content: fa-content($fa-var-check);
+  }
+
+  & > .toast-error {
+    background-color: darken(theme-color('danger'), 5%);
+  }
+
+  & > .toast-warning {
+    background-color: darken(theme-color('warning'), 5%);
+  }
+
+  & > .toast-success {
+    background-color: darken(theme-color('success'), 5%);
+  }
+
+  & > .toast-info {
+    background-color: darken(theme-color('info'), 5%);
+  }
+}

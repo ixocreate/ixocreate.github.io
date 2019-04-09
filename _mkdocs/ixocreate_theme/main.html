@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% if page.title %}{{ page.title }} - {% endif %}{{ config.site_name }}</title>
+    {% if page and page.is_homepage %}<meta name="description" content="{{ config['site_description'] }}">{% endif %}
+    {% if config.site_author %}<meta name="author" content="{{ config.site_author }}">{% endif %}
+    {% if page and page.canonical_url %}<link rel="canonical" href="{{ page.canonical_url }}">{% endif %}
+
+
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="{{ 'img/ixocreate/favicon/apple-touch-icon-57x57.png'|url }}"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ 'img/ixocreate/favicon/apple-touch-icon-114x114.png'|url }}"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ 'img/ixocreate/favicon/apple-touch-icon-72x72.png'|url }}"/>
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ 'img/ixocreate/favicon/apple-touch-icon-144x144.png'|url }}"/>
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="{{ 'img/ixocreate/favicon/apple-touch-icon-60x60.png'|url }}"/>
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ 'img/ixocreate/favicon/apple-touch-icon-120x120.png'|url }}"/>
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ 'img/ixocreate/favicon/apple-touch-icon-76x76.png'|url }}"/>
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ 'img/ixocreate/favicon/apple-touch-icon-152x152.png'|url }}"/>
+    <link rel="icon" type="image/png" href="{{ 'img/ixocreate/favicon/favicon-196x196.png'|url }}" sizes="196x196"/>
+    <link rel="icon" type="image/png" href="{{ 'img/ixocreate/favicon/favicon-96x96.png'|url }}" sizes="96x96"/>
+    <link rel="icon" type="image/png" href="{{ 'img/ixocreate/favicon/favicon-32x32.png'|url }}" sizes="32x32"/>
+    <link rel="icon" type="image/png" href="{{ 'img/ixocreate/favicon/favicon-16x16.png'|url }}" sizes="16x16"/>
+    <link rel="icon" type="image/png" href="{{ 'img/ixocreate/favicon/favicon-128.png'|url }}" sizes="128x128"/>
+
+    <meta name="msapplication-TileColor" content="#FFFFFF"/>
+    <meta name="msapplication-TileImage" content="{{ 'img/ixocreate/favicon/mstile-144x144.png'|url }}"/>
+    <meta name="msapplication-square70x70logo" content="{{ 'img/ixocreate/favicon/mstile-70x70.png'|url }}"/>
+    <meta name="msapplication-square150x150logo" content="{{ 'img/ixocreate/favicon/mstile-150x150.png'|url }}"/>
+    <meta name="msapplication-wide310x150logo" content="{{ 'img/ixocreate/favicon/mstile-310x150.png'|url }}"/>
+    <meta name="msapplication-square310x310logo" content="{{ 'img/ixocreate/favicon/mstile-310x310.png'|url }}"/>
+
+    <link href="{{ 'css/vendor.min.css'|url }}" rel="stylesheet">
+    <link href="{{ 'css/main.min.css'|url }}" rel="stylesheet">
+    {%- if config.theme.highlightjs %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/{{ config.theme.hljs_style }}.min.css">
+    {%- endif %}
+
+    {%- if config.google_analytics %}
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', '{{ config.google_analytics[0] }}', '{{ config.google_analytics[1] }}');
+        ga('send', 'pageview');
+    </script>
+    {%- endif %}
+</head>
+<body class="page-footer-bottom page-body brand-ixocreate">
+<header class="page-header">
+    <div class="fixed-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-xl navbar-light main-nav content-padding">
+                <div class="navbar-outer-container align-items-center align-items-xl-end">
+                    <a class="navbar-brand" href="/" title="Home">
+                        <div class="navbar-brand-logo"></div>
+                    </a>
+
+                    <div class="text-right">
+                        <button class="navbar-toggler toggle-mobile-nav" type="button">
+                            <img src="{{ 'img/menu-bar.svg'|url }}" alt="MENU"/>
+                        </button>
+                    </div>
+
+                    <div id="main-nav" class="navbar-desktop">
+                        <div class="navbar-container">
+                            {% include "nav-hero.html" %}
+                        </div>
+                    </div>
+
+                    <div id="main-nav-mobile" class="navbar-mobile">
+                        <div class="mobile-navbar-container">
+                            <div class="mobile-nav-close-container content-padding">
+                                <button class="mobile-nav-close toggle-mobile-nav">
+                                    <img src="{{ 'img/menu-close.svg'|url }}" />
+                                </button>
+                            </div>
+                            <ul class="navbar-nav">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="mobile-nav-backdrop toggle-mobile-nav"></div>
+    </div>
+</header>
+<main class="page-content">
+    <div class="page-hero-bg">
+        <div class="container">
+            <div class="bg-white">
+                <section class="section section-page-hero header-padding">
+                    <div class="page-hero">
+                        <div class="content-padding max-content-width">
+                            {% if page.title %}<h1 class="title">{{ page.title }}</h1>{% endif %}
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="bg-white">
+            <div class="content-padding pt-4 fix-margins">
+                {% if page.is_homepage %}
+                    {{ page.content }}
+
+                    <div>
+                        {% include "repos.html" %}
+                    </div>
+                {% else %}
+                <div class="row">
+                    <div class="col-md-9" role="main">
+                        {% if page %}
+                        <div class="mb-5">
+                            <ol class="breadcrumb">
+                                {% for doc in page.ancestors %}
+                                <li class="breadcrumb-item">{{ doc.title }}</li>
+                                {% endfor %}
+                                <li class="breadcrumb-item">{{ page.title }}</li>
+                            </ol>
+                        </div>
+                        {% endif %}
+                        {{ page.content }}
+                    </div>
+                    <div class="col-md-3">
+                        {% include "toc.html" %}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<div class="container">
+    <div class="footer-prepend content-padding">
+
+    </div>
+</div>
+
+<footer class="page-footer">
+    <div class="page-footer-bg">
+        <div class="container">
+            <div class="footer-content content-padding">
+                <div class="row align-items-center footer-info">
+                    <div class="col-lg-6 col-xl-auto text-center text-lg-left order-1 order-lg-0 order-xl-0">
+                        <a href="https://www.ixolit.com">
+                            <img src="{{ 'img/ixolit-group-logo-blackbg.svg'|url }}" alt="IXOLIT Group" class="footer-logo" />
+                        </a>
+                    </div>
+                    <div class="col-lg-6 col-xl text-center mt-4 mt-xl-0 text-lg-left text-muted order-2 order-lg-2 order-xl-1">
+                        Copyright &copy; 2001–2019 IXOLIT Group
+                    </div>
+                    <div class="col-lg-6 col-xl text-right order-0 mb-5 mb-lg-0 order-lg-1 order-xl-2">
+                        <ul class="social-links social-links-big justify-content-lg-end">
+                            <li><a href="https://github.com/ixocreate" target="_blank" title="Github"><i class="fab fa-github social-github"></i></a></li>
+                            <li><a href="" target="_blank" title="Twitter"><i class="fab fa-twitter social-twitter"></i></a></li>
+                            <li><a href="" target="_blank" title="LinkedIn"><i class="fab fa-linkedin social-linkedin"></i></a></li>
+                            <li><a href="" target="_blank" title="Facebook"><i class="fab fa-facebook social-facebook"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 col-xl-12 text-center text-lg-right order-5">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+{%- if config.theme.highlightjs %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+{%- for lang in config.theme.hljs_languages %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/{{lang}}.min.js"></script>
+{%- endfor %}
+<script>hljs.initHighlightingOnLoad();</script>
+{%- endif %}
+<script src="{{ 'js/vendor.min.js'|url }}"></script>
+<script src="{{ 'js/main.min.js'|url }}"></script>
+</body>
+</html>

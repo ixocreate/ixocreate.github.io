@@ -1,0 +1,35 @@
+{%- if nav|length>0 %}
+<ul class="navbar-nav mx-auto mega-nav">
+    {%- for nav_item in nav %}
+    {%- if nav_item.children %}
+    <li class="nav-item dropdown{% if nav_item.active %} active{% endif %}">
+    <a class="nav-link nav-link-animate" href="#" role="button" data-toggle="dropdown">{{ nav_item.title }} <i class="fas fa-chevron-down arrow"></i></a>
+    <div class="dropdown-menu">
+        <div class="row no-gutters">
+            <div class="col-4"></div>
+            <div class="col-4">
+                <div class="p-3 py-4">
+                    {%- for sub_item in nav_item.children %}
+                    <a class="mega-nav-link{% if sub_item.active %} active{% endif %}" href="{{ sub_item.url|url }}">{{ sub_item.title }}</a>
+                    {%- endfor %}
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="mega-nav-contact-box bg-gradient-primary">
+                    <div class="mb-4">
+                        Business
+                    </div>
+                    <a href="" class="btn btn-outline-light">Business</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </li>
+    {%- else %}
+    <li class="nav-item{% if nav_item.active %} active{% endif %}">
+    <a class="nav-link nav-link-animate" href="{{ nav_item.url|url }}">{{ nav_item.title }}</a>
+    </li>
+    {%- endif %}
+    {%- endfor %}
+</ul>
+{%- endif %}

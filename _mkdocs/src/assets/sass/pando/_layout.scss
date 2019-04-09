@@ -1,0 +1,54 @@
+html {
+  font-size: $font-size-html-base;
+  height: 100%;
+}
+
+@include media-breakpoint-up(sm) {
+  html {
+    font-size: $font-size-html-sm;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  html {
+    font-size: $font-size-html-md;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  html {
+    font-size: $font-size-html-lg;
+  }
+}
+
+.btn-scroll-top {
+  @include opacity(0);
+  @include border-radius(5px);
+  @include transition(opacity .3s ease-in-out);
+
+  line-height: 31px;
+  position: fixed;
+  z-index: 50;
+  right: 10px;
+  bottom: 10px;
+  width: 35px;
+  height: 35px;
+  padding: 0;
+  cursor: pointer;
+  text-align: center;
+  color: #000;
+  border: 2px solid #000;
+  background: rgba(0, 0, 0, .2);
+
+  &:hover {
+    @include opacity(.8);
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.is-scrolled .btn-scroll-top {
+  @include opacity(.5);
+}

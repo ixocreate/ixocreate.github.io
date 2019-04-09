@@ -1,0 +1,50 @@
+.btn-app {
+  min-width: 90px;
+  padding: 12px;
+
+  span,
+  i {
+    font-size: 1.8em;
+    line-height: 1em;
+    display: block;
+    margin: 0 0 2px;
+    padding: 0;
+  }
+
+  &.btn-xs {
+    min-width: 65px;
+    padding: 5px;
+
+    span,
+    i {
+      font-size: 1.5em;
+    }
+  }
+
+  &.btn-sm {
+    min-width: 70px;
+    padding: 8px;
+  }
+
+  &.btn-lg {
+    min-width: 100px;
+    padding: 15px;
+
+    span,
+    i {
+      font-size: 2em;
+    }
+  }
+
+  &.btn-link {
+    &,
+    &:hover,
+    &:focus,
+    &:active,
+    &.active,
+    &[disabled],
+    fieldset[disabled] & {
+      text-decoration: none;
+    }
+  }
+}

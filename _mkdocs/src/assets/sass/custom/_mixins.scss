@@ -1,0 +1,205 @@
+@mixin grayscale {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+@mixin grayscale-off {
+  -webkit-filter: grayscale(0);
+  filter: grayscale(0);
+}
+
+
+@mixin page-color($brand, $data) {
+  $brand-primary-dark: map-get($data, dark);
+  $brand-primary-light: map-get($data, light);
+  $brand-logo-width-ratio: map-get($data, logo-width-ratio);
+  $brand-logo: url('../img/#{$brand}/#{$brand}-logo.svg');
+  $brand-icon: url('../img/#{$brand}/#{$brand}-icon.svg');
+  $cta-bg: url('../img/brand/#{$brand}/#{$brand}-bg-1.svg');
+
+  .navbar-brand {
+    height: 40px;
+    width: 40px * $brand-logo-width-ratio + 20px;
+
+    @include media-breakpoint-down(xs) {
+      height: 35px;
+      width: 35px * $brand-logo-width-ratio;
+    }
+  }
+
+  .navbar-brand-logo {
+    background-image: $brand-logo;
+    width: 40px * $brand-logo-width-ratio;
+
+    @include media-breakpoint-down(xs) {
+      height: 35px;
+      width: 35px * $brand-logo-width-ratio;
+    }
+  }
+
+  &.is-scrolled .navbar-brand-logo {
+    width: 35px * $brand-logo-width-ratio;
+  }
+
+  a {
+    color: $brand-primary-dark;
+
+    @include hover {
+      color: $brand-primary-light;
+    }
+  }
+
+  .bg-primary {
+    background: $brand-primary-dark !important;
+  }
+
+  .bg-gradient-primary {
+    background: $brand-primary-dark;
+    @include gradient-x($brand-primary-dark, $brand-primary-light);
+  }
+
+  .ixo-checkbox label:after {
+    color: $brand-primary-dark;
+  }
+
+  .text-primary {
+    color: $brand-primary-dark !important;
+  }
+
+  .dropdown-item {
+    color: $body-color;
+
+    @include hover {
+      color: $body-color;
+    }
+
+    &:active,
+    &.active {
+      color: $white;
+      background: $brand-primary-dark;
+    }
+  }
+
+  .btn-primary {
+    @include button-variant($brand-primary-dark, $brand-primary-dark, $brand-primary-light, $brand-primary-light, $brand-primary-light, $brand-primary-light)
+  }
+
+  .btn-outline-primary {
+    @include button-outline-variant($brand-primary-dark, $white, $brand-primary-light, $brand-primary-light)
+  }
+
+  .btn-link {
+    color: $brand-primary-dark;
+
+    @include hover {
+      color: $brand-primary-light;
+    }
+  }
+
+  .page-hero-bg {
+    &:after {
+      background-image: $brand-icon;
+    }
+  }
+
+  .section-quote .quote {
+    background: $brand-primary-dark;
+    @include gradient-x($brand-primary-dark, $brand-primary-light);
+  }
+
+  .section-cta-bg .cta-bg {
+    background-image: $cta-bg;
+
+    .btn-primary {
+      border-color: $white;
+      background: $white;
+      color: $brand-primary-dark;
+
+      &:hover {
+        border-color: $gray-2;
+        background: $gray-2;
+        color: $brand-primary-dark;
+      }
+    }
+
+    .btn-outline-primary {
+      border-color: $white;
+      color: $white;
+
+      &:hover {
+        border-color: $white;
+        background: $white;
+        color: $brand-primary-dark;
+      }
+    }
+  }
+
+  .navbar-brand-logo {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top left;
+  }
+
+  .main-nav {
+    .navbar-desktop {
+      .navbar-nav {
+        .nav-link {
+          &.nav-link-animate {
+            &:after {
+              background: $brand-primary-dark;
+            }
+          }
+        }
+
+        .nav-item.active .nav-link,
+        .nav-link:hover {
+          color: $brand-primary-dark;
+        }
+      }
+    }
+  }
+
+  .navbar-outer-container {
+    .mega-nav {
+      .mega-nav-contact-box {
+        &:after {
+          content: '';
+          position: absolute;
+          right: -1px;
+          top: 0;
+          bottom: 0;
+          width: 2px;
+          background-color: $brand-primary-light;
+        }
+
+        .btn-outline-light:hover {
+          color: $brand-primary-dark;
+        }
+      }
+
+      .mega-nav-link.active {
+        color: $brand-primary-dark;
+      }
+    }
+  }
+
+
+  .page-hero {
+    &.bg-color {
+      background-color: $gray-5;
+      @include gradient-x($gray-5, $gray-4);
+    }
+  }
+
+  .section-bulleted-list .bulleted-list {
+    &.bulleted-list-bordered {
+      color: $brand-primary-dark;
+      fill: $brand-primary-dark;
+
+      .section-title-sm {
+        color: $brand-primary-dark;
+      }
+    }
+  }
+
+}

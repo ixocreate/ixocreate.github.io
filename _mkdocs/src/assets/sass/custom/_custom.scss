@@ -1,0 +1,12 @@
+@import "mixins";
+@import "base";
+@import "footer";
+@import "header";
+@import "page";
+@import "blocks";
+
+@each $brand, $data in $brands {
+  body.brand-#{$brand} {
+    @include page-color($brand, $data);
+  }
+}

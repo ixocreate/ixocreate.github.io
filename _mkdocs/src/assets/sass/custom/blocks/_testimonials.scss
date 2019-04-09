@@ -1,0 +1,74 @@
+.section-testimonials {
+  overflow: hidden;
+  background:#FFF;
+  .company-quotes-slider-col{
+    background-color: $gray-5;
+    padding: 90px 0;
+
+    .company-quotes-slider{
+      .company-quote{
+        padding: 0 45px;
+
+        .icon-quote{
+          width:90px;
+          margin:0 auto;
+        }
+
+        .quote{
+          font-size:1.6rem;
+        }
+
+        .quote-author{
+          font-size:1.333334rem;
+        }
+
+        .quote-author-title{
+          font-size: 1.06666666rem;
+        }
+      }
+
+      .slick-arrow{
+        height:100%;
+        top:0;
+        width:30px;
+        z-index:500;
+        background:$gray-4;
+        transform: none;
+        &:before{
+          font-family: "Font Awesome 5 Pro";
+          font-size: 16px;
+          font-weight:400;
+          color:$white;
+        }
+        &.slick-prev{
+          left:0;
+          &:before{content:"";}
+        }
+        &.slick-next{
+          right:0;
+          &:before{content:"";}
+        }
+      }
+    }
+  }
+
+  .company-quotes-logos-slider-col{
+    .company-quotes-logo{
+      @include grayscale;
+      opacity: .25;
+      transform: scale(1);
+      transition: filter .3s, opacity .3s, transform .3s;
+
+      &.active-logo{
+        @include grayscale-off;
+        opacity: 1;
+      }
+
+      &.animation{
+        transform: scale(0);
+      }
+    }
+  }
+
+}
+

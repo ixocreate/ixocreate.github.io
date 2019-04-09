@@ -1,0 +1,286 @@
+body.page-body .social-links {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+
+  .social-github:hover {
+    color: #1b1b1b;
+  }
+
+  .social-twitter:hover {
+    color: #3ba0ee;
+  }
+
+  .social-linkedin:hover {
+    color: #2674af;
+  }
+
+  .social-facebook:hover {
+    color: #415b95;
+  }
+
+  a,
+  .fa {
+    color: $gray-5;
+    display: block;
+  }
+
+  .fab:before {
+    transition: color .25s;
+  }
+}
+
+body.page-body .footer-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px;
+  text-transform: uppercase;
+  color: $gray-4;
+  font-weight: $font-weight-bold;
+
+  & > li {
+    margin-bottom: 8px;
+  }
+
+  a {
+    color: $gray-1;
+
+    &:hover {
+      color: $gray-1;
+    }
+  }
+}
+
+.page-footer {
+  padding: 0;
+}
+
+.page-footer-bg {
+  position: relative;
+  padding: 0 0 150px;
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: $gray-5;
+    z-index: -1;
+  }
+
+  &:after {
+    content: '';
+    background-repeat: no-repeat;
+    background-image: url('../img/ixolit/ixolit-icon.svg');
+    background-size: 1000px auto;
+    background-position: -40px 0;
+    position: absolute;
+    left: 0;
+    top: -240px;
+    bottom: 0;
+    width: 100%;
+    z-index: -1;
+  }
+}
+
+.footer-prepend {
+  font-size: 14px;
+  padding-top: 75px;
+  padding-bottom: 35px;
+  background: $gray-1;
+
+  &.dark {
+    position: relative;
+    background: $gray-6;
+    color: $gray-1;
+
+    h1, h2, h3, h4, h5, h6 {
+      color: $white;
+    }
+
+    .text-muted {
+      color: $gray-4 !important;
+    }
+
+    &:after {
+      position: absolute;
+      left: $content-padding-x;
+      right: $content-padding-x;
+      bottom: 0;
+      content: '';
+      height: 1px;
+      background: $gray-4;
+    }
+
+    .social-links {
+      color: $gray-4;
+
+      .social-github:hover {
+        color: $gray-1;
+      }
+
+      a,
+      .fa {
+        color: $gray-4;
+      }
+    }
+
+    .form-control {
+      color: $gray-1;
+      background: $gray-5;
+      border-color: $gray-5;
+
+      &:focus {
+        border-color: $gray-3;
+      }
+
+      &::placeholder {
+        color: $gray-3;
+      }
+    }
+  }
+
+  .social-links {
+    font-size: 50px;
+    line-height: 50px;
+
+    & > li {
+      margin-right: 40px;
+    }
+
+    a,
+    .fa {
+      height: 50px;
+    }
+  }
+}
+
+.page-body .footer-content {
+  padding-top: 75px;
+  padding-bottom: 75px;
+  background: $gray-6;
+  color: $gray-1;
+
+  .text-muted {
+    color: $gray-4 !important;
+  }
+
+  .social-links {
+    font-size: 30px;
+    line-height: 30px;
+
+    .social-github:hover {
+      color: $gray-1;
+    }
+
+    & > li {
+      margin-right: 24px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    a,
+    .fa {
+      height: 30px;
+    }
+  }
+
+  .footer-logo {
+    width: 250px;
+    height: 83px;
+    margin-right: 30px;
+  }
+
+  .footer-info {
+    margin-top: 70px;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .footer-content {
+    .social-links {
+      justify-content: center;
+      font-size: 40px;
+      line-height: 40px;
+
+      & > li {
+        margin: 0 10px;
+      }
+
+      a,
+      .fa {
+        height: 40px;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(xs) {
+  .page-footer-bg {
+    padding: 0;
+
+    &:before,
+    &:after {
+      display: none;
+    }
+  }
+
+  .footer-prepend,
+  .footer-content {
+    &.dark {
+      &:after {
+        left: $content-padding-x-xs;
+        right: $content-padding-x-xs;
+      }
+    }
+
+    .footer-logo {
+      width: 220px;
+      height: 50px;
+      margin-right: 0;
+    }
+
+    .social-links {
+      justify-content: center;
+
+      & > li {
+        margin: 0 10px;
+      }
+    }
+  }
+}
+
+.pci-logo {
+  position: relative;
+  display: inline-block;
+
+  img {
+    height: 30px;
+    width: 78px;
+    transition: opacity .3s;
+
+    &.hover {
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+    }
+  }
+
+  &:hover {
+    img {
+      &.hover {
+        opacity: 1;
+      }
+
+      &.no-hover {
+        opacity: 0;
+      }
+    }
+  }
+}

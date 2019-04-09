@@ -1,0 +1,61 @@
+@mixin border-radius($border-radius: $border-radius-base) {
+  border-radius: $border-radius;
+}
+
+@mixin no-user-select() {
+  user-select: none;
+}
+
+@mixin transition($transition...) {
+  -webkit-transition: $transition;
+       -o-transition: $transition;
+          transition: $transition;
+}
+
+@mixin opacity($opacity: 1) {
+  opacity: $opacity;
+}
+
+@mixin gradient-directional-free($deg: 45deg, $color-stops...) {
+  background: nth(nth($color-stops, 1), 1);
+  background-image: -webkit-linear-gradient($deg, $color-stops);
+  background-image:      -o-linear-gradient($deg, $color-stops);
+  background-image:         linear-gradient($deg, $color-stops);
+  background-repeat: repeat-x;
+}
+
+@mixin caret($direction: 'bottom', $size: 5px, $color: #fff) {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  content: '';
+  vertical-align: middle;
+  border: $size solid transparent;
+
+  @if $direction == 'bottom' {
+    border-top: $size solid $color;
+    border-bottom: 0;
+  } @else if $direction == 'top' {
+    border-top: 0;
+    border-bottom: $size solid $color;
+  } @else if $direction == 'left' {
+    border-right: $size solid $color;
+    border-left: 0;
+  } @else if $direction == 'right' {
+    border-right: 0;
+    border-left: $size solid $color;
+  }
+}
+
+@mixin loading-circle($color: $body-color) {
+  display: inline-block;
+  position: relative;
+  top: -2px;
+  width: 1em;
+  height: 1em;
+  animation: pando-loading-spin 1s infinite linear;
+  vertical-align: middle;
+  border: .2em solid transparentize($color, .8);
+  border-top-color: $color;
+  border-radius: 50%;
+}

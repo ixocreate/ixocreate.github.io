@@ -1,0 +1,14 @@
+site_name: IXOCREATE
+docs_dir: 'docs/'
+site_dir: '../_site'
+theme:
+  name: null
+  custom_dir: 'ixocreate_theme/'
+  highlightjs: true
+  hljs_style: dracula
+  hljs_languages:
+    - php
+    - bash
+nav:
+  - 'Getting Started': 'getting-started.md'
+

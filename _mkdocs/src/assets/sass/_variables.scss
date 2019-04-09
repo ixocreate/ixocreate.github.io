@@ -1,0 +1,105 @@
+//custom variables go here
+
+$brands: (
+  ixocreate: (
+    light: #90d431,
+    dark: #50a000,
+    logo-width-ratio: 8.125
+  ),
+);
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1600px
+);
+$grid-gutter-width: 30px;
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1510px
+);
+
+$yiq-contrasted-threshold: 200;
+
+$spacer: 15px;
+
+$max-content-width: 640px;
+$max-content-width-lg: 1080px;
+
+$primary: #a01428;
+$danger: #dc283c;
+$success: #90d431;
+$warning: #ffc61b;
+
+$small-font-size: .85rem;
+
+$font-size-html-base: 14px;
+$font-family-sans-serif: 'Source Sans Pro', sans-serif;
+$font-weight-bold: 600;
+$font-weight-bolder: 600;
+$font-weight-thin: 300;
+
+$gray-1: #f5f5f5;
+$gray-2: #dcdcdc;
+$gray-3: #a0a0a0;
+$gray-4: #787878;
+$gray-5: #4b4b4b;
+$gray-6: #1e1e1e;
+$white: $gray-1;
+
+$body-color: $gray-5;
+$body-bg: $gray-2;
+$text-muted: $gray-3;
+
+$btn-border-radius: 0;
+$btn-border-radius-sm: 0;
+$btn-padding-x: 30px;
+$btn-padding-x-sm: 15px;
+$btn-padding-y: 4px;
+$btn-line-height: 40px;
+$btn-font-weight: $font-weight-bold;
+
+$content-padding-x: 90px;
+$content-padding-x-sm: 45px;
+$content-padding-x-xs: $grid-gutter-width / 2;
+
+$navbar-brand-padding-y: 0;
+$navbar-light-toggler-border-color: transparent;
+$navbar-light-color: $gray-6;
+$navbar-nav-link-padding-x: 10px;
+
+$navbar-padding-y: 20px;
+$navbar-padding-x: $grid-gutter-width / 2;
+
+$input-border-radius: 0;
+$input-height: 50px;
+$input-bg: $gray-2;
+$input-border-width: 2px;
+$input-border-color: $gray-2;
+$input-color: $body-color;
+$input-placeholder-color: $gray-4;
+$input-focus-border-color: $gray-6;
+$input-padding-x: 1.5rem;
+
+$default-footer-background: transparent;
+$default-footer-font-color: $body-color;
+$default-footer-link-color: $primary;
+$default-footer-link-color-hover: darken($default-footer-link-color, 10%);
+
+$modal-content-border-radius: 0;
+$modal-content-border-color: tranparent;
+
+$breadcrumb-active-color: $gray-3;
+$breadcrumb-bg: transparent;
+$breadcrumb-divider-color: $gray-3;
+$breadcrumb-divider: ' | ';
+$breadcrumb-margin-bottom: 0;
+$breadcrumb-padding-x: 0;
+$breadcrumb-padding-y: 0;

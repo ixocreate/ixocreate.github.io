@@ -1,0 +1,275 @@
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+p {
+  line-height: 1.7em;
+}
+
+@include media-breakpoint-down(xs) {
+  .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.header-padding {
+  padding-top: 100px;
+}
+
+.fix-margins {
+  &::before {
+    display: table;
+    clear: both;
+    content: '';
+  }
+
+  &::after {
+    display: table;
+    clear: both;
+    content: '';
+  }
+}
+
+.content-padding-reset {
+  margin-left: -$content-padding-x;
+  margin-right: -$content-padding-x;
+
+  @include media-breakpoint-down(sm) {
+    margin-left: -$content-padding-x-sm;
+    margin-right: -$content-padding-x-sm;
+  }
+
+  @include media-breakpoint-down(xs) {
+    margin-left: -$content-padding-x-xs;
+    margin-right: -$content-padding-x-xs;
+  }
+}
+
+.content-padding {
+  padding-left: $content-padding-x;
+  padding-right: $content-padding-x;
+
+  @include media-breakpoint-down(sm) {
+    padding-left: $content-padding-x-sm;
+    padding-right: $content-padding-x-sm;
+  }
+
+  @include media-breakpoint-down(xs) {
+    padding-left: $content-padding-x-xs;
+    padding-right: $content-padding-x-xs;
+  }
+}
+
+.btn {
+  text-transform: uppercase;
+}
+
+@each $color, $value in $theme-colors {
+  .btn-#{$color} {
+    &,
+    &:hover {
+      color: $gray-1;
+    }
+  }
+}
+
+.section-margin {
+  margin-bottom: 70px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $gray-6;
+  font-weight: $font-weight-bold;
+}
+
+.section-title {
+  font-size: 3.5rem;
+  font-weight: $font-weight-thin;
+  margin-bottom: 30px;
+  text-align: center;
+  color: $gray-6;
+
+  @include media-breakpoint-down(md) {
+    font-size: 2.5rem;
+  }
+}
+
+.section-title-sm {
+  font-size: 1.75rem;
+  margin-bottom: 15px;
+}
+
+.dropdown-menu {
+  background: $white;
+  box-shadow: $box-shadow;
+  border: 0;
+}
+
+.max-content-width {
+  max-width: $max-content-width;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.max-content-width-lg {
+  max-width: $max-content-width-lg;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.embed-responsive.youtube-video-link {
+  cursor: pointer;
+  position: relative;
+  display: block;
+
+  .preview-img {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-position: center center;
+    background-size: cover;
+  }
+
+  .play-btn {
+    width: 120px;
+    height: 84px;
+    margin-left: -60px;
+    margin-top: -42px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+}
+
+.caption {
+  font-size: .9rem;
+  line-height: 1.3rem;
+}
+
+
+.breadcrumb {
+  font-weight: $font-weight-bold;
+}
+
+.news-date-info {
+  color: $gray-3;
+  font-weight: $font-weight-bold;
+}
+
+.wysiwyg-content {
+  p {
+    margin-bottom: $spacer;
+  }
+
+  .linebreak-true {
+    margin-top: -$spacer;
+  }
+
+  :last-child {
+    margin-bottom: 0;
+  }
+}
+
+.form-control {
+  font-weight: $font-weight-bold;
+
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.ixo-checkbox {
+  padding-left: 25px;
+
+  input {
+    display: none;
+  }
+
+  label {
+    position: relative;
+    margin-bottom: 0;
+
+    &:before {
+      position: absolute;
+      left: -25px;
+      top: 2px;
+      content: '';
+      width: 18px;
+      height: 18px;
+      background: $white;
+    }
+
+    &:after {
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      content: '\f00c';
+      position: absolute;
+      top: 2px;
+      left: -22.3px;
+      color: $primary;
+      display: none;
+      font-size: 13px;
+    }
+
+  }
+
+  input:checked + label:after {
+    display: block;
+  }
+}
+
+.ixo-select {
+  select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    padding-right: $input-padding-x * 2;
+  }
+
+  &:after {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    content: '\f078';
+    position: absolute;
+    top: 15px;
+    right: calc(#{$input-padding-x} + 2px);
+    color: $gray-4;
+  }
+}
+
+.form-group.form-floating-label {
+  position: relative;
+
+  label {
+    color: $gray-4;
+    position: absolute;
+    top: 1rem;
+    left: calc(#{$input-padding-x} + 2px);
+    z-index: 1;
+    pointer-events: none;
+    margin-bottom: 0;
+    transition: top .15s, font-size .15s, color .15s;
+    font-weight: $font-weight-bold;
+  }
+
+  textarea {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .form-control::placeholder {
+    color: transparent;
+  }
+
+  &.not-empty {
+    label {
+      top: 2px;
+      font-size: .75rem;
+      color: $gray-3;
+    }
+  }
+}

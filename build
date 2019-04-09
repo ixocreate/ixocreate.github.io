@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+cd _mkdocs
+php -f generate-github-repos.php
+mkdocs build
+cd ..

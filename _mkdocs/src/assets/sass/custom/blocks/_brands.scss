@@ -1,0 +1,141 @@
+.section-brands {
+
+  .brand-box {
+    padding: 0;
+    height: 100%;
+    min-height: 320px;
+    display:flex;
+    color: $body-color;
+    background-position: center center;
+    background-size: cover;
+
+    @each $brand, $data in $brands {
+      &.brand-box-#{$brand} {
+        background-image: url('../img/brand/#{$brand}/#{$brand}-bg-2.svg');
+
+        .btn-primary {
+          @include button-variant(map-get($data, dark), map-get($data, dark), map-get($data, light), map-get($data, light), map-get($data, light), map-get($data, light))
+        }
+      }
+    }
+
+    &.brand-box-big {
+      min-height: 500px;
+      padding: 0;
+      display:block;
+
+      .slick-dotted.slick-slider{
+        margin-bottom:0;
+      }
+
+      a.brand-box-slide{
+        height: 100%;
+        min-height: 500px;
+        display: flex;
+        color: $body-color;
+        cursor: pointer;
+        text-decoration:none;
+        outline:none;
+
+        .brand-box-content {
+
+          .brand-box-btn-container {
+            width: 350px;
+            position: relative;
+            height: 0;
+            transition: height .3s;
+            overflow: hidden;
+            .brand-box-btn {
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              transform: translateY(100%);
+              transition: transform .3s;
+            }
+
+            @include media-breakpoint-down(lg) {
+              height:calc(#{$btn-line-height} + 2* (#{$btn-border-width} + #{$btn-padding-y}));
+
+              .brand-box-btn {
+                display: block;
+                transform:  translateY(0%);
+              }
+            }
+          }
+
+          &:hover {
+            .brand-box-btn-container{
+              height:calc(#{$btn-line-height} + 2* (#{$btn-border-width} + #{$btn-padding-y}));
+              .brand-box-btn {
+                display: block;
+                transform:  translateY(0%);
+              }
+            }
+          }
+
+          @include media-breakpoint-down(xl) {
+            width: 250px;
+          }
+
+          @include media-breakpoint-down(lg) {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    .brand-box-content {
+      background: $white;
+      width: 100%;
+      max-width: 350px;
+      overflow: hidden;
+      padding: $spacer * 1.5 $spacer * 1.5 0;
+
+      .brand-box-logo {
+        height: 30px;
+        width: auto;
+      }
+
+      .brand-box-description {
+        font-size: 1.3rem;
+      }
+
+      .brand-box-btn-container{
+        position:relative;
+        height:0;
+        transition: height .3s;
+        overflow:hidden;
+        .brand-box-btn {
+          position:absolute;
+          bottom:0;
+          left:0;
+          transform:  translateY(100%);
+          transition: transform .3s;
+        }
+        @include media-breakpoint-down(lg) {
+          height:calc(#{$btn-line-height} + 2* (#{$btn-border-width} + #{$btn-padding-y}));
+
+          .brand-box-btn {
+            display: block;
+            transform:  translateY(0%);
+          }
+        }
+      }
+    }
+
+    &:hover {
+      text-decoration: none;
+      color: $body-color;
+      .brand-box-content {
+        .brand-box-btn-container{
+          height:calc(#{$btn-line-height} + 2* (#{$btn-border-width} + #{$btn-padding-y}));
+          .brand-box-btn {
+            display: block;
+            transform:  translateY(0%);
+          }
+        }
+      }
+    }
+  }
+}
+

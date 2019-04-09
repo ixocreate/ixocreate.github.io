@@ -1,0 +1,28 @@
+.text-bold {
+  font-weight: bold;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+.text-italic {
+  font-style: italic;
+}
+
+.text-default {
+  color: $body-color;
+}
+
+.text-xs {
+  font-size: .7em;
+}
+.text-sm {
+  font-size: .85em;
+}
+.text-lg {
+  font-size: 1.3em;
+}
+.text-xl {
+  font-size: 1.6em;
+}

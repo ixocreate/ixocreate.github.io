@@ -1,0 +1,62 @@
+.section-address {
+  .google-map {
+    background: $gray-4;
+    min-height: 340px;
+    height: 100%;
+  }
+
+  .map-left .map-element {
+    margin-left: -(map-get($container-max-widths, xxl) - $max-content-width) / 2 + $grid-gutter-width / 2;
+
+    @include media-breakpoint-down(xl) {
+      margin-left: -(map-get($container-max-widths, xl) - $max-content-width) / 2 + $grid-gutter-width / 2;
+    }
+
+    @include media-breakpoint-down(lg) {
+      margin-left: -(map-get($container-max-widths, lg) - $max-content-width) / 2 + $grid-gutter-width / 2;
+    }
+
+    @include media-breakpoint-down(md) {
+      margin-left: -$content-padding-x;
+      margin-right: -$content-padding-x;
+    }
+
+    @include media-breakpoint-down(sm) {
+      margin-left: -$content-padding-x-sm;
+      margin-right: -$content-padding-x-sm;
+    }
+
+    @include media-breakpoint-down(xs) {
+      margin-left: -$content-padding-x-xs;
+      margin-right: -$content-padding-x-xs;
+    }
+  }
+
+  .map-right .map-element {
+    margin-right: -(map-get($container-max-widths, xxl) - $max-content-width) / 2 + $grid-gutter-width / 2;
+
+    @include media-breakpoint-down(xl) {
+      margin-right: -(map-get($container-max-widths, xl) - $max-content-width) / 2 + $grid-gutter-width / 2;
+    }
+
+    @include media-breakpoint-down(lg) {
+      margin-right: -(map-get($container-max-widths, lg) - $max-content-width) / 2 + $grid-gutter-width / 2;
+    }
+
+    @include media-breakpoint-down(md) {
+      margin-left: -$content-padding-x;
+      margin-right: -$content-padding-x;
+    }
+
+    @include media-breakpoint-down(sm) {
+      margin-left: -$content-padding-x-sm;
+      margin-right: -$content-padding-x-sm;
+    }
+
+    @include media-breakpoint-down(xs) {
+      margin-left: -$content-padding-x-xs;
+      margin-right: -$content-padding-x-xs;
+    }
+  }
+}
+
