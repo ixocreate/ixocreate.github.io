@@ -6,4 +6,7 @@ nbproject
 
 # System Files
 .DS_Store
+
+# Build
+_mkdocs/ixocreate*.json
 _site

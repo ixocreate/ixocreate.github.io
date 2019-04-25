@@ -1,7 +1,24 @@
 <?php
-final class Generate
+
+final class GithubReposPageGenerator
 {
     private $curl;
+
+    private $orderPriority = [
+        'ixocreate',
+        'coding-standard',
+        'admin-frontend',
+    ];
+
+    private $noBuild = [
+        'ixocreate',
+        'coding-standard',
+        'admin-frontend',
+    ];
+
+    private $exclude = [
+        'ixocreate.github.io',
+    ];
 
     public function __construct()
     {
@@ -19,117 +36,191 @@ final class Generate
         curl_close($this->curl);
     }
 
-    public function generate()
+    public function generate(string $org, string $output)
     {
-        $pages = $this->getPages();
-
-        $items = [];
-
-        for ($i = 1; $i <= $pages; $i++) {
-            $result = $this->fetch($i);
-            $result = json_decode($result, true);
-            $items = array_merge($items, $result);
-        }
-
-        $repos = [];
-        foreach ($items as $item) {
-            if (in_array($item['name'], ['admin-frontend', 'coding-standard', 'ixocreate', 'ixocreate.github.io'])) {
-                continue;
-            }
-
-            $repos[] = [
-                'fullName' => $item['full_name'],
-                'url' => $item['html_url'],
-                'description' => $item['description'],
-            ];
-        }
-
-        $html = [];
-        foreach ($repos as $repo) {
-            $html[] = '<div class="row mt-3">';
-            $html[] = '<div class="col-md-12 col-lg-3"><a href="' . $repo['url'] . '" target="_blank">' . $repo['fullName'] . '</a></div>';
-            $html[] = '<div class="col-md-12 col-lg-9">';
-            $html[] = '<div class="row">';
-            $html[] = '<div class="col-md-12 col-lg-2"><a href="' . sprintf('https://travis-ci.com/%s/branches', $repo['fullName']) . '" target="_blank"><img src="' . sprintf('https://img.shields.io/travis/%s.svg', $repo['fullName']) . '"></a></div>';
-            $html[] = '<div class="col-md-12 col-lg-2"><a href="' . sprintf('https://coveralls.io/github/%s?branch=master', $repo['fullName']) . '" target="_blank"><img src="' . sprintf('https://img.shields.io/coveralls/github/%s.svg', $repo['fullName']) . '"></a></div>';
-            $html[] = '<div class="col-md-12 col-lg-2"><a href="' . sprintf('https://packagist.org/packages/%s', $repo['fullName']) . '" target="_blank"><img src="' . sprintf('https://img.shields.io/packagist/v/%s.svg', $repo['fullName']) . '"></a></div>';
-            $html[] = '<div class="col-md-12 col-lg-2"><a href="' . sprintf('https://github.com/%s/blob/master/LICENSE', $repo['fullName']) . '" target="_blank"><img src="' . sprintf('https://img.shields.io/github/license/%s.svg', $repo['fullName']) . '"></a></div>';
-            $html[] = '<div class="col-md-12 col-lg-2"><a href="' . sprintf('https://github.com/%s/issues', $repo['fullName']) . '" target="_blank"><img src="' . sprintf('https://img.shields.io/github/issues/%s.svg', $repo['fullName']) . '"></a></div>';
-            $html[] = '<div class="col-md-12 col-lg-2"><a href="' . $repo['url'] . '" target="_blank"><img src="' . sprintf('https://img.shields.io/github/commit-activity/m/%s.svg', $repo['fullName']) . '"></a></div>';
-            $html[] = '</div>';
-            $html[] = '</div>';
-            $html[] = '</div>';
-            if (!empty($repo['description'])) {
-                $html[] = '<div>' . $repo['description'] . '</div>';
-            }
-        }
-
-        file_put_contents(__DIR__ . '/ixocreate_theme/repos.html', implode($html, PHP_EOL));
+        file_put_contents(__DIR__ . '/' . $output, $this->render($this->repos($org)));
     }
 
-    public function getPages(): int
+    public function repos(string $org): array
     {
         $page = 1;
+        $force = false;
+        $repos = [];
 
-        $url = "https://api.github.com/orgs/ixocreate/repos?page=1&type=all&sort=full_name";
+        while ($page > 0) {
+            $response = $this->request($org, $page, $force);
+            $repos = array_merge($repos, $response['data']);
+            $page = $this->nextPageNumber($response['headers']['link'][0]);
+        }
+
+        $repos = array_map(function ($repo) {
+            return [
+                'name' => $repo['name'],
+                'fullName' => $repo['full_name'],
+                'url' => $repo['html_url'],
+                'description' => $repo['description'],
+                'language' => $repo['language'],
+                'archived' => $repo['archived'],
+            ];
+        }, $repos);
+
+        $repos = array_filter($repos, function ($repo) {
+            return !$repo['archived'] && !in_array($repo['name'], $this->exclude);
+        });
+
+        uasort($repos, function ($a, $b) {
+            $aName = strtolower($a['name']);
+            $bName = strtolower($b['name']);
+            if (in_array($aName, $this->orderPriority) && in_array($bName, $this->orderPriority)) {
+                return (array_search($aName, $this->orderPriority) > array_search($bName,
+                        $this->orderPriority)) ? 1 : -1;
+            }
+            if (in_array($aName, $this->orderPriority)) {
+                return -1;
+            }
+            if (in_array($bName, $this->orderPriority)) {
+                return 1;
+            }
+            return strcmp($aName, $bName);
+        });
+
+        return $repos;
+    }
+
+    public function request(string $org, int $page = 1, $force = false): array
+    {
+        return json_decode($this->fetch($org, $page, $force), true);
+    }
+
+    public function fetch(string $org, int $page = 1, $force = false): string
+    {
+        $cacheFile = "$org-$page.json";
+        if (!$force && file_exists($cacheFile) && time() - filemtime($cacheFile) < 600) {
+            return file_get_contents($cacheFile);
+        }
+
+        $url = 'https://api.github.com/orgs/' . $org . '/repos?page=' . $page . '&type=all&sort=full_name';
+
+        $headers = [];
         curl_setopt($this->curl, CURLOPT_URL, $url);
-        curl_setopt($this->curl, CURLOPT_HEADER, true);
-        curl_setopt($this->curl, CURLOPT_NOBODY, true);
 
-        $result = curl_exec($this->curl);
+        // this function is called by curl for each header received
+        curl_setopt($this->curl, CURLOPT_HEADERFUNCTION,
+            function ($curl, $header) use (&$headers) {
+                $len = strlen($header);
+                $header = explode(':', $header, 2);
+                if (count($header) < 2) // ignore invalid headers
+                {
+                    return $len;
+                }
+                $name = strtolower(trim($header[0]));
+                if (!array_key_exists($name, $headers)) {
+                    $headers[$name] = [trim($header[1])];
+                } else {
+                    $headers[$name][] = trim($header[1]);
+                }
+                return $len;
+            }
+        );
 
-        $lines = explode("\r\n", $result);
+        $data = json_decode(trim(curl_exec($this->curl)), true);
 
-        foreach ($lines as $line) {
-            $line = trim($line);
-            if (substr($line, 0, 6) !== "Link: ") {
+        $response = json_encode([
+            'headers' => $headers,
+            'data' => $data,
+        ]);
+
+        file_put_contents($cacheFile, $response);
+
+        return $response;
+    }
+
+    private function nextPageNumber($linksHeader)
+    {
+        $page = null;
+        $links = explode(', ', trim(substr($linksHeader, 6)));
+        foreach ($links as $link) {
+            $hrefandrel = explode('; ', $link);
+            if (count($hrefandrel) !== 2 || empty($hrefandrel[1])) {
                 continue;
             }
 
-            $links = explode(', ', trim(substr($line, 6)));
-            foreach ($links as $link) {
-                $hrefandrel = explode('; ', $link);
-                if (count($hrefandrel) !== 2 || empty($hrefandrel[1])) {
-                    continue;
-                }
-
-                if ($hrefandrel[1] !== 'rel="last"') {
-                    continue;
-                }
-
-                $href = trim($hrefandrel[0], '<>');
-                $query = parse_url($href, PHP_URL_QUERY);
-                if (empty($query)) {
-                    break 2;
-                }
-
-                $queryParams = [];
-                parse_str($query, $queryParams);
-
-                if (empty($queryParams['page'])) {
-                    break 2;
-                }
-
-                $page = (int) $queryParams['page'];
-                break 2;
+            if ($hrefandrel[1] !== 'rel="last"') {
+                continue;
             }
-        }
 
+            $href = trim($hrefandrel[0], '<>');
+            $query = parse_url($href, PHP_URL_QUERY);
+            if (empty($query)) {
+                break;
+            }
+
+            $queryParams = [];
+            parse_str($query, $queryParams);
+
+            if (empty($queryParams['page'])) {
+                break;
+            }
+
+            $page = (int)$queryParams['page'];
+            break;
+        }
         return $page;
     }
 
-    public function fetch(int $page = 1)
+    private function render(array $repos): string
     {
-        $url = "https://api.github.com/orgs/ixocreate/repos?page=".$page."&type=all&sort=full_name";
-        curl_setopt($this->curl, CURLOPT_URL, $url);
-        curl_setopt($this->curl, CURLOPT_HEADER, false);
-        curl_setopt($this->curl, CURLOPT_NOBODY, false);
-        curl_setopt($this->curl, CURLOPT_HTTPGET, true);
+        $html = [];
+        foreach ($repos as $repo) {
+            $html[] = '<div class="row mt-3">';
+            $html[] = '<div class="col-md-12 col-lg-3">';
+            $html[] = '<h5 class="mb-0">' . $repo['description'] . '</h5>';
+            $html[] = '<a href="' . $repo['url'] . '" target="_blank" title="' . $repo['description'] . '"><i class="fab fa-sm fa-fw fa-github"></i> <b>' . $repo['fullName'] . '</b></a>';
+            $html[] = '</div>';
+            $html[] = '<div class="col-md-12 col-lg-9">';
+            $html[] = '<div class="row">';
 
-        return trim(curl_exec($this->curl));
+            $html[] = '<div class="col-lg flex-grow-1"><a href="' . sprintf('https://packagist.org/packages/%s',
+                    $repo['fullName']) . '" target="_blank"><img src="' . sprintf('https://img.shields.io/packagist/v/%s.svg',
+                    $repo['fullName']) . '" alt="Packagist"></a></div>';
 
+            if (!$repo['language'] || $repo['language'] === 'PHP') {
+                $html[] = '<div class="col-lg flex-grow-1"><a href="' . sprintf('https://packagist.org/packages/%s',
+                        $repo['fullName']) . '" target="_blank"><img src="' . sprintf('https://img.shields.io/packagist/php-v/%s.svg',
+                        $repo['fullName']) . '" alt="PHP Version"></a></div>';
+            } else {
+                $html[] = '<div class="col-lg flex-grow-1"></div>';
+            }
+
+            $html[] = '<div class="col-lg flex-grow-1"><a href="' . sprintf('https://github.com/%s/blob/master/LICENSE',
+                    $repo['fullName']) . '" target="_blank"><img src="' . sprintf('https://img.shields.io/github/license/%s.svg',
+                    $repo['fullName']) . '" alt="LICENSE"></a></div>';
+
+            $html[] = '<div class="col-lg flex-grow-1"><a href="' . sprintf('https://github.com/%s/issues',
+                    $repo['fullName']) . '" target="_blank"><img src="' . sprintf('https://img.shields.io/github/issues/%s.svg',
+                    $repo['fullName']) . '" alt="Open Issues"></a></div>';
+
+            // $html[] = '<div class="col-md-12 col-lg-2"><a href="' . $repo['url'] . '" target="_blank"><img src="' . sprintf('https://img.shields.io/github/commit-activity/m/%s.svg', $repo['fullName']) . '"></a></div>';
+
+            if (!in_array($repo['name'], $this->noBuild)) {
+                $html[] = '<div class="col-lg flex-grow-1"><a href="' . sprintf('https://travis-ci.com/%s/branches',
+                        $repo['fullName']) . '" target="_blank"><img src="' . sprintf('https://img.shields.io/travis/%s.svg',
+                        $repo['fullName']) . '" alt="Build Status"></a></div>';
+                $html[] = '<div class="col-lg flex-grow-1"><a href="' . sprintf('https://coveralls.io/github/%s?branch=master',
+                        $repo['fullName']) . '" target="_blank"><img src="' . sprintf('https://img.shields.io/coveralls/github/%s.svg',
+                        $repo['fullName']) . '" alt="Coverage Status"></a></div>';
+            } else {
+                $html[] = '<div class="col-lg flex-grow-1"></div>';
+                $html[] = '<div class="col-lg flex-grow-1"></div>';
+            }
+
+            $html[] = '</div>';
+            $html[] = '</div>';
+            $html[] = '</div>';
+        }
+        return implode($html, PHP_EOL);
     }
 }
 
-(new Generate())->generate();
+(new GithubReposPageGenerator())->generate('ixocreate', 'ixocreate_theme/repos.html');
 
