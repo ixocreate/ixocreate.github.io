@@ -180,38 +180,38 @@ final class GithubReposPageGenerator
             $html[] = '<div class="col-md-12 col-lg-9">';
             $html[] = '<div class="row">';
 
-            $html[] = '<div class="col-lg flex-grow-1"><a href="' . sprintf('https://packagist.org/packages/%s',
+            $html[] = '<div class="col-lg"><a href="' . sprintf('https://packagist.org/packages/%s',
                     $repo['fullName']) . '" target="_blank"><img src="' . sprintf('https://img.shields.io/packagist/v/%s.svg',
                     $repo['fullName']) . '" alt="Packagist"></a></div>';
 
             if (!$repo['language'] || $repo['language'] === 'PHP') {
-                $html[] = '<div class="col-lg flex-grow-1"><a href="' . sprintf('https://packagist.org/packages/%s',
+                $html[] = '<div class="col-lg"><a href="' . sprintf('https://packagist.org/packages/%s',
                         $repo['fullName']) . '" target="_blank"><img src="' . sprintf('https://img.shields.io/packagist/php-v/%s.svg',
                         $repo['fullName']) . '" alt="PHP Version"></a></div>';
             } else {
-                $html[] = '<div class="col-lg flex-grow-1"></div>';
+                $html[] = '<div class="col-lg"></div>';
             }
 
-            $html[] = '<div class="col-lg flex-grow-1"><a href="' . sprintf('https://github.com/%s/blob/master/LICENSE',
+            $html[] = '<div class="col-lg"><a href="' . sprintf('https://github.com/%s/blob/master/LICENSE',
                     $repo['fullName']) . '" target="_blank"><img src="' . sprintf('https://img.shields.io/github/license/%s.svg',
                     $repo['fullName']) . '" alt="LICENSE"></a></div>';
 
-            $html[] = '<div class="col-lg flex-grow-1"><a href="' . sprintf('https://github.com/%s/issues',
+            $html[] = '<div class="col-lg"><a href="' . sprintf('https://github.com/%s/issues',
                     $repo['fullName']) . '" target="_blank"><img src="' . sprintf('https://img.shields.io/github/issues/%s.svg',
                     $repo['fullName']) . '" alt="Open Issues"></a></div>';
 
             // $html[] = '<div class="col-md-12 col-lg-2"><a href="' . $repo['url'] . '" target="_blank"><img src="' . sprintf('https://img.shields.io/github/commit-activity/m/%s.svg', $repo['fullName']) . '"></a></div>';
 
             if (!in_array($repo['name'], $this->noBuild)) {
-                $html[] = '<div class="col-lg flex-grow-1"><a href="' . sprintf('https://travis-ci.com/%s/branches',
+                $html[] = '<div class="col-lg"><a href="' . sprintf('https://travis-ci.com/%s/branches',
                         $repo['fullName']) . '" target="_blank"><img src="' . sprintf('https://img.shields.io/travis/%s.svg',
                         $repo['fullName']) . '" alt="Build Status"></a></div>';
-                $html[] = '<div class="col-lg flex-grow-1"><a href="' . sprintf('https://coveralls.io/github/%s?branch=master',
+                $html[] = '<div class="col-lg"><a href="' . sprintf('https://coveralls.io/github/%s?branch=master',
                         $repo['fullName']) . '" target="_blank"><img src="' . sprintf('https://img.shields.io/coveralls/github/%s.svg',
                         $repo['fullName']) . '" alt="Coverage Status"></a></div>';
             } else {
-                $html[] = '<div class="col-lg flex-grow-1"></div>';
-                $html[] = '<div class="col-lg flex-grow-1"></div>';
+                $html[] = '<div class="col-lg"></div>';
+                $html[] = '<div class="col-lg"></div>';
             }
 
             $html[] = '</div>';
