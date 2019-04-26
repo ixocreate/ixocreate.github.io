@@ -67,8 +67,8 @@
                 <div class="p-3 py-4">
                     <a class="mega-nav-link" href="../installation/">Installation</a>
                     <a class="mega-nav-link active" href="./">Directory Structure</a>
-                    <a class="mega-nav-link" href="../page-type/">Create PageTypes</a>
                     <a class="mega-nav-link" href="../block/">Create Blocks</a>
+                    <a class="mega-nav-link" href="../page-type/">Create Page-Types</a>
                     <a class="mega-nav-link" href="../template/">Templates</a>
                 </div>
             </div>
@@ -77,7 +77,7 @@
                     <div class="mb-4">
                         Business
                     </div>
-                    <a href="" class="btn btn-outline-light">Business</a>
+                    <a href="https://www.ixocreate.com" target="_blank" class="btn btn-outline-light">Business</a>
                 </div>
             </div>
         </div>
@@ -108,7 +108,7 @@
                     <div class="mb-4">
                         Business
                     </div>
-                    <a href="" class="btn btn-outline-light">Business</a>
+                    <a href="https://www.ixocreate.com" target="_blank" class="btn btn-outline-light">Business</a>
                 </div>
             </div>
         </div>
@@ -136,7 +136,7 @@
                     <div class="mb-4">
                         Business
                     </div>
-                    <a href="" class="btn btn-outline-light">Business</a>
+                    <a href="https://www.ixocreate.com" target="_blank" class="btn btn-outline-light">Business</a>
                 </div>
             </div>
         </div>
@@ -160,7 +160,7 @@
                     <div class="mb-4">
                         Business
                     </div>
-                    <a href="" class="btn btn-outline-light">Business</a>
+                    <a href="https://www.ixocreate.com" target="_blank" class="btn btn-outline-light">Business</a>
                 </div>
             </div>
         </div>
@@ -184,8 +184,8 @@
     <div class="dropdown-menu dropdown-menu-right">
         <a class="dropdown-item" href="../installation/">Installation</a>
         <a class="dropdown-item active" href="./">Directory Structure</a>
-        <a class="dropdown-item" href="../page-type/">Create PageTypes</a>
         <a class="dropdown-item" href="../block/">Create Blocks</a>
+        <a class="dropdown-item" href="../page-type/">Create Page-Types</a>
         <a class="dropdown-item" href="../template/">Templates</a>
     </div>
     </li>
@@ -249,9 +249,9 @@
             <div class="content-padding pt-4 fix-margins">
                 
                 <div class="row">
-                    <div class="col-md-9" role="main">
+                    <div class="col-md-8" role="main">
                         
-                        <div class="mb-5">
+                        <div class="mb-2">
                             <ol class="breadcrumb">
                                 
                                 <li class="breadcrumb-item">Getting Started</li>
@@ -260,10 +260,143 @@
                             </ol>
                         </div>
                         
-                        
+                        <div class="main-content">
+                            <h1 id="root-directory">Root directory</h1>
+<h2 id="the-bootstrap-directory">The <i>bootstrap</i> directory</h2>
+<p>This directory houses all bootstrap relevant information and configurations for your application. 
+For environment specific configurations you can use the <code>local</code> directory.</p>
+<h2 id="the-data-directory">The <i>data</i> directory</h2>
+<p>The <code>data</code> directory contains your file based cached as well as any editorial file. This directory will be created
+by the application (if not yet created) and isn't commited to git. Therefor you might need to create this directory 
+manually (in case of permission problems) and ensure it is writable by your web server. </p>
+<h2 id="the-public-directory">The <i>public</i> directory</h2>
+<p>The public directory contains the index.php file, which is the HTTP entry point for your application. You might want 
+to symlink your assets such as images, JavaScript, and CSS as well as your editorial media. </p>
+<h2 id="the-resources-directory">The <i>resources</i> directory</h2>
+<p>The <code>resource</code> directory contains some varying files which are needed by the application like migration files, raw 
+ assets (SASS, LESS, TypeScript etc.). Moreover it is the default location for generated php files for performance 
+ optimization such as generated factories and proxy classes.</p>
+<h2 id="the-src-directory">The <i>src</i> directory</h2>
+<p>The <code>src</code> directory contains the source code of your application. See the section below for more detailed information.</p>
+<h2 id="the-templates-directory">The <i>templates</i> directory</h2>
+<p>This directory contains all your template files.</p>
+<h2 id="the-tests-directory">The <i>tests</i> directory</h2>
+<p>The <code>tests</code> directory contains your phpunit tests. </p>
+<h2 id="the-vendor-directory">The <i>vendor</i> directory</h2>
+<p>The <code>vendor</code> directory contains all installed composer dependencies.</p>
+<h1 id="source-src-directory">Source (src) directory</h1>
+<p>This directory contains by default two directories: <code>App</code> and <code>Admin</code>. </p>
+<p>In most cases you will only work with <code>App</code> but in some cases you might want to add only Admin-relevant classes into
+the <code>Admin</code> directory.</p>
+<p>Every class inside the following directories is added automatically into the servicemanager as long the respectively 
+interface is implemented.</p>
+<h2 id="the-action-directory">The <i>Action</i> directory</h2>
+<p>Available for <code>App</code> and <code>Admin</code>. Classes need to implement <code>\Psr\Http\Server\MiddlewareInterface</code></p>
+<h2 id="the-block-directory">The <i>Block</i> directory</h2>
+<p>Available for <code>App</code>. Classes need to implement <code>\Ixocreate\Cms\Block\BlockInterface</code></p>
+<h2 id="the-console-directory">The <i>Console</i> directory</h2>
+<p>Available for <code>App</code> and <code>Admin</code>. Classes need to implement <code>\Ixocreate\Application\Console\CommandInterface</code></p>
+<h2 id="the-image-directory">The <i>Image</i> directory</h2>
+<p>Available for <code>App</code>. Classes need to implement <code>\Ixocreate\Media\ImageDefinitionInterface</code></p>
+<h2 id="the-media-directory">The <i>Media</i> directory</h2>
+<p>Available for <code>App</code>. Classes need to implement <code>\Ixocreate\Media\Handler\HandlerInterface</code></p>
+<h2 id="the-middleware-directory">The <i>Middleware</i> directory</h2>
+<p>Available for <code>App</code> and <code>Admin</code>. Classes need to implement <code>\Psr\Http\Server\MiddlewareInterface</code></p>
+<h2 id="the-pagetype-directory">The <i>PageType</i> directory</h2>
+<p>Available for <code>App</code>. Classes need to implement <code>\Ixocreate\Cms\PageType\PageTypeInterface</code></p>
+<h2 id="the-registry-directory">The <i>Registry</i> directory</h2>
+<p>Available for <code>Admin</code>. Classes need to implement <code>\Ixocreate\Registry\RegistryEntryInterface</code></p>
+<h2 id="the-repository-directory">The <i>Repository</i> directory</h2>
+<p>Available for <code>App</code> and <code>Admin</code>. Classes need to implement <code>\Ixocreate\Database\Repository\RepositoryInterface</code></p>
+<h2 id="the-resource-directory">The <i>Resource</i> directory</h2>
+<p>Available for <code>App</code> and <code>Admin</code>. Classes need to implement <code>\Ixocreate\Resource\ResourceInterface</code></p>
+<h2 id="the-subscriber-directory">The <i>Subscriber</i> directory</h2>
+<p>Available for <code>App</code>. Classes need to implement <code>\Ixocreate\Event\Subscriber\SubscriberInterface</code></p>
+<h2 id="the-type-directory">The <i>Type</i> directory</h2>
+<p>Available for <code>App</code> and <code>Admin</code>. Classes need to implement <code>\Ixocreate\Type\TypeInterface</code></p>
+                        </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         
+<div class="navbar-light navbar-expand-md hidden-print" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    <div id="toc-collapse" class="navbar-collapse collapse card">
+        <ul class="nav flex-column toc-sidenav p-2">
+            <li class="nav-item pl-0">
+                <a class="nav-link" href="#root-directory">Root directory</a>
+            </li>
+            <li class="nav-item pl-3">
+                <a href="#the-bootstrap-directory" class="nav-link">The bootstrap directory</a>
+            </li>
+            <li class="nav-item pl-3">
+                <a href="#the-data-directory" class="nav-link">The data directory</a>
+            </li>
+            <li class="nav-item pl-3">
+                <a href="#the-public-directory" class="nav-link">The public directory</a>
+            </li>
+            <li class="nav-item pl-3">
+                <a href="#the-resources-directory" class="nav-link">The resources directory</a>
+            </li>
+            <li class="nav-item pl-3">
+                <a href="#the-src-directory" class="nav-link">The src directory</a>
+            </li>
+            <li class="nav-item pl-3">
+                <a href="#the-templates-directory" class="nav-link">The templates directory</a>
+            </li>
+            <li class="nav-item pl-3">
+                <a href="#the-tests-directory" class="nav-link">The tests directory</a>
+            </li>
+            <li class="nav-item pl-3">
+                <a href="#the-vendor-directory" class="nav-link">The vendor directory</a>
+            </li>
+            <li class="nav-item pl-0">
+                <a class="nav-link" href="#source-src-directory">Source (src) directory</a>
+            </li>
+            <li class="nav-item pl-3">
+                <a href="#the-action-directory" class="nav-link">The Action directory</a>
+            </li>
+            <li class="nav-item pl-3">
+                <a href="#the-block-directory" class="nav-link">The Block directory</a>
+            </li>
+            <li class="nav-item pl-3">
+                <a href="#the-console-directory" class="nav-link">The Console directory</a>
+            </li>
+            <li class="nav-item pl-3">
+                <a href="#the-image-directory" class="nav-link">The Image directory</a>
+            </li>
+            <li class="nav-item pl-3">
+                <a href="#the-media-directory" class="nav-link">The Media directory</a>
+            </li>
+            <li class="nav-item pl-3">
+                <a href="#the-middleware-directory" class="nav-link">The Middleware directory</a>
+            </li>
+            <li class="nav-item pl-3">
+                <a href="#the-pagetype-directory" class="nav-link">The PageType directory</a>
+            </li>
+            <li class="nav-item pl-3">
+                <a href="#the-registry-directory" class="nav-link">The Registry directory</a>
+            </li>
+            <li class="nav-item pl-3">
+                <a href="#the-repository-directory" class="nav-link">The Repository directory</a>
+            </li>
+            <li class="nav-item pl-3">
+                <a href="#the-resource-directory" class="nav-link">The Resource directory</a>
+            </li>
+            <li class="nav-item pl-3">
+                <a href="#the-subscriber-directory" class="nav-link">The Subscriber directory</a>
+            </li>
+            <li class="nav-item pl-3">
+                <a href="#the-type-directory" class="nav-link">The Type directory</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
                     </div>
                 </div>
                 
@@ -294,10 +427,7 @@
                     </div>
                     <div class="col-lg-6 col-xl text-right order-0 mb-5 mb-lg-0 order-lg-1 order-xl-2">
                         <ul class="social-links social-links-big justify-content-lg-end">
-                            <li><a href="https://github.com/ixocreate" target="_blank" title="Github"><i class="fab fa-github social-github"></i></a></li>
-                            <li><a href="" target="_blank" title="Twitter"><i class="fab fa-twitter social-twitter"></i></a></li>
-                            <li><a href="" target="_blank" title="LinkedIn"><i class="fab fa-linkedin social-linkedin"></i></a></li>
-                            <li><a href="" target="_blank" title="Facebook"><i class="fab fa-facebook social-facebook"></i></a></li>
+                            <li><a href="https://github.com/ixocreate" target="_blank" title="Github"><i class="fab fa-github"></i></a></li>
                         </ul>
                     </div>
                     <div class="col-lg-6 col-xl-12 text-center text-lg-right order-5">

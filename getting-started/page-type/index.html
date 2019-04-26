@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Create PageTypes - IXOCREATE</title>
+    <title>Create Page-Types - IXOCREATE</title>
     
     
     
@@ -67,8 +67,8 @@
                 <div class="p-3 py-4">
                     <a class="mega-nav-link" href="../installation/">Installation</a>
                     <a class="mega-nav-link" href="../directory-structure/">Directory Structure</a>
-                    <a class="mega-nav-link active" href="./">Create PageTypes</a>
                     <a class="mega-nav-link" href="../block/">Create Blocks</a>
+                    <a class="mega-nav-link active" href="./">Create Page-Types</a>
                     <a class="mega-nav-link" href="../template/">Templates</a>
                 </div>
             </div>
@@ -77,7 +77,7 @@
                     <div class="mb-4">
                         Business
                     </div>
-                    <a href="" class="btn btn-outline-light">Business</a>
+                    <a href="https://www.ixocreate.com" target="_blank" class="btn btn-outline-light">Business</a>
                 </div>
             </div>
         </div>
@@ -108,7 +108,7 @@
                     <div class="mb-4">
                         Business
                     </div>
-                    <a href="" class="btn btn-outline-light">Business</a>
+                    <a href="https://www.ixocreate.com" target="_blank" class="btn btn-outline-light">Business</a>
                 </div>
             </div>
         </div>
@@ -136,7 +136,7 @@
                     <div class="mb-4">
                         Business
                     </div>
-                    <a href="" class="btn btn-outline-light">Business</a>
+                    <a href="https://www.ixocreate.com" target="_blank" class="btn btn-outline-light">Business</a>
                 </div>
             </div>
         </div>
@@ -160,7 +160,7 @@
                     <div class="mb-4">
                         Business
                     </div>
-                    <a href="" class="btn btn-outline-light">Business</a>
+                    <a href="https://www.ixocreate.com" target="_blank" class="btn btn-outline-light">Business</a>
                 </div>
             </div>
         </div>
@@ -184,8 +184,8 @@
     <div class="dropdown-menu dropdown-menu-right">
         <a class="dropdown-item" href="../installation/">Installation</a>
         <a class="dropdown-item" href="../directory-structure/">Directory Structure</a>
-        <a class="dropdown-item active" href="./">Create PageTypes</a>
         <a class="dropdown-item" href="../block/">Create Blocks</a>
+        <a class="dropdown-item active" href="./">Create Page-Types</a>
         <a class="dropdown-item" href="../template/">Templates</a>
     </div>
     </li>
@@ -237,7 +237,7 @@
                 <section class="section section-page-hero header-padding">
                     <div class="page-hero">
                         <div class="content-padding max-content-width">
-                            <h1 class="title">Create PageTypes</h1>
+                            <h1 class="title">Create Page-Types</h1>
                         </div>
                     </div>
                 </section>
@@ -249,21 +249,91 @@
             <div class="content-padding pt-4 fix-margins">
                 
                 <div class="row">
-                    <div class="col-md-9" role="main">
+                    <div class="col-md-8" role="main">
                         
-                        <div class="mb-5">
+                        <div class="mb-2">
                             <ol class="breadcrumb">
                                 
                                 <li class="breadcrumb-item">Getting Started</li>
                                 
-                                <li class="breadcrumb-item">Create PageTypes</li>
+                                <li class="breadcrumb-item">Create Page-Types</li>
                             </ol>
                         </div>
                         
-                        
+                        <div class="main-content">
+                            <h1 id="introduction">Introduction</h1>
+<p>A PageType describes what kind of information an editor has or can provide and displays them on a corresponding template. 
+Moreover a PageTypes defines where a page can be located inside the sitemap tree. Some page types can be used only as root 
+tree, others must be below a specific other page type. </p>
+<p>A basic PageType (for a Root Page) can look like this:</p>
+<pre><code class="php">declare(strict_types=1);
+namespace App\PageType;
+
+use Ixocreate\Cms\PageType\PageTypeInterface;
+use Ixocreate\Cms\PageType\HandlePageTypeInterface;
+use Ixocreate\Cms\PageType\RootPageTypeInterface;
+use Ixocreate\Schema\Schema;
+use Ixocreate\Contract\Schema\BuilderInterface;
+use Ixocreate\Contract\Schema\SchemaInterface;
+
+final class HomePageType implements PageTypeInterface, RootPageTypeInterface, HandlePageTypeInterface
+{
+    public static function serviceName(): string 
+    {
+        return 'home';
+    }
+
+    public function label(): string
+    {
+        return 'Home';
+    }
+
+    public function template(): string
+    {
+        return &quot;page::home&quot;;
+    }
+
+    public function allowedChildren(): ?array
+    {
+        return [];
+    }
+
+    public function provideSchema($name, BuilderInterface $builder, $options = []): SchemaInterface
+    {
+        return (new Schema())-&gt;withElements([
+            $builder-&gt;create(TabbedGroupElement::class, 'tabs')
+                -&gt;withElements([
+                    $builder-&gt;create(GroupElement::class, 'content')
+                        -&gt;withLabel(&quot;Content&quot;)
+                        -&gt;withElements([
+                            $builder-&gt;create(BlockContainerElement::class, 'content')
+                                -&gt;withBlocks(['text'])
+                        ])
+                ])       
+        ]);
+    }
+}
+</code></pre>
+                        </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         
+<div class="navbar-light navbar-expand-md hidden-print" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    <div id="toc-collapse" class="navbar-collapse collapse card">
+        <ul class="nav flex-column toc-sidenav p-2">
+            <li class="nav-item pl-0">
+                <a class="nav-link" href="#introduction">Introduction</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
                     </div>
                 </div>
                 
@@ -294,10 +364,7 @@
                     </div>
                     <div class="col-lg-6 col-xl text-right order-0 mb-5 mb-lg-0 order-lg-1 order-xl-2">
                         <ul class="social-links social-links-big justify-content-lg-end">
-                            <li><a href="https://github.com/ixocreate" target="_blank" title="Github"><i class="fab fa-github social-github"></i></a></li>
-                            <li><a href="" target="_blank" title="Twitter"><i class="fab fa-twitter social-twitter"></i></a></li>
-                            <li><a href="" target="_blank" title="LinkedIn"><i class="fab fa-linkedin social-linkedin"></i></a></li>
-                            <li><a href="" target="_blank" title="Facebook"><i class="fab fa-facebook social-facebook"></i></a></li>
+                            <li><a href="https://github.com/ixocreate" target="_blank" title="Github"><i class="fab fa-github"></i></a></li>
                         </ul>
                     </div>
                     <div class="col-lg-6 col-xl-12 text-center text-lg-right order-5">
