@@ -13,8 +13,8 @@ nav:
   - 'Getting Started':
       - 'Installation': 'getting-started/installation.md'
       - 'Directory Structure': 'getting-started/directory-structure.md'
-      - 'Create PageTypes': 'getting-started/page-type.md'
       - 'Create Blocks': 'getting-started/block.md'
+      - 'Create Page-Types': 'getting-started/page-type.md'
       - 'Templates': 'getting-started/template.md'
   - 'Components':
       - 'Schema': 'components/schema.md'
