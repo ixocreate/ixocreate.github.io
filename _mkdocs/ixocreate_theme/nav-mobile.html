@@ -1,0 +1,20 @@
+{%- if nav|length>0 %}
+<ul class="navbar-nav">
+    {%- for nav_item in nav %}
+    {%- if nav_item.children %}
+    <li class="nav-item dropdown{% if nav_item.active %} active{% endif %}">
+    <a class="nav-link" href="#" role="button" data-toggle="dropdown">{{ nav_item.title }} <i class="fas fa-chevron-down arrow"></i></a>
+    <div class="dropdown-menu dropdown-menu-right">
+        {%- for sub_item in nav_item.children %}
+        <a class="dropdown-item{% if sub_item.active %} active{% endif %}" href="{{ sub_item.url|url }}">{{ sub_item.title }}</a>
+        {%- endfor %}
+    </div>
+    </li>
+    {%- else %}
+    <li class="nav-item{% if nav_item.active %} active{% endif %}">
+    <a class="nav-link" href="{{ nav_item.url|url }}">{{ nav_item.title }}</a>
+    </li>
+    {%- endif %}
+    {%- endfor %}
+</ul>
+{%- endif %}
