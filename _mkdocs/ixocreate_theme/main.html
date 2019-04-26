@@ -106,15 +106,14 @@
             <div class="content-padding pt-4 fix-margins">
                 {% if page.is_homepage %}
                     {{ page.content }}
-
                     <div>
                         {% include "repos.html" %}
                     </div>
                 {% else %}
                 <div class="row">
-                    <div class="col-md-9" role="main">
+                    <div class="col-md-8" role="main">
                         {% if page %}
-                        <div class="mb-5">
+                        <div class="mb-2">
                             <ol class="breadcrumb">
                                 {% for doc in page.ancestors %}
                                 <li class="breadcrumb-item">{{ doc.title }}</li>
@@ -123,9 +122,11 @@
                             </ol>
                         </div>
                         {% endif %}
-                        {{ page.content }}
+                        <div class="main-content">
+                            {{ page.content }}
+                        </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         {% include "toc.html" %}
                     </div>
                 </div>
@@ -157,10 +158,7 @@
                     </div>
                     <div class="col-lg-6 col-xl text-right order-0 mb-5 mb-lg-0 order-lg-1 order-xl-2">
                         <ul class="social-links social-links-big justify-content-lg-end">
-                            <li><a href="https://github.com/ixocreate" target="_blank" title="Github"><i class="fab fa-github social-github"></i></a></li>
-                            <li><a href="" target="_blank" title="Twitter"><i class="fab fa-twitter social-twitter"></i></a></li>
-                            <li><a href="" target="_blank" title="LinkedIn"><i class="fab fa-linkedin social-linkedin"></i></a></li>
-                            <li><a href="" target="_blank" title="Facebook"><i class="fab fa-facebook social-facebook"></i></a></li>
+                            <li><a href="https://github.com/ixocreate" target="_blank" title="Github"><i class="fab fa-github"></i></a></li>
                         </ul>
                     </div>
                     <div class="col-lg-6 col-xl-12 text-center text-lg-right order-5">

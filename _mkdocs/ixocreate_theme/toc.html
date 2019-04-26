@@ -1,5 +1,5 @@
 {% if page.toc|length>0 %}
-<div class="navbar-light navbar-expand-md hidden-print sticky-top sticky-offset" role="complementary" style="top: 110px;">
+<div class="navbar-light navbar-expand-md hidden-print" role="complementary">
     <div class="navbar-header">
         <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
             <span class="fa fa-angle-down"></span>
@@ -7,7 +7,7 @@
     </div>
 
     <div id="toc-collapse" class="navbar-collapse collapse card">
-        <ul class="nav flex-column toc-sidenav">
+        <ul class="nav flex-column toc-sidenav p-2">
             {%- for toc_item in page.toc %}
             <li class="nav-item pl-0">
                 <a class="nav-link" href="{{ toc_item.url }}">{{ toc_item.title }}</a>

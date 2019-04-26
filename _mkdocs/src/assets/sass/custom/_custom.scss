@@ -3,7 +3,6 @@
 @import "footer";
 @import "header";
 @import "page";
-@import "blocks";
 
 @each $brand, $data in $brands {
   body.brand-#{$brand} {
