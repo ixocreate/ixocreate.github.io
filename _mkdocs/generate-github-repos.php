@@ -204,10 +204,10 @@ final class GithubReposPageGenerator
 
             if (!in_array($repo['name'], $this->noBuild)) {
                 $html[] = '<div class="col-xl"><a href="' . sprintf('https://travis-ci.com/%s/branches',
-                        $repo['fullName']) . '" target="_blank"><img src="' . sprintf('https://img.shields.io/travis/%s.svg',
+                        $repo['fullName']) . '" target="_blank"><img src="' . sprintf('https://travis-ci.com/%s.svg?branch=master',
                         $repo['fullName']) . '" alt="Build Status"></a></div>';
                 $html[] = '<div class="col-xl"><a href="' . sprintf('https://coveralls.io/github/%s?branch=master',
-                        $repo['fullName']) . '" target="_blank"><img src="' . sprintf('https://img.shields.io/coveralls/github/%s.svg',
+                        $repo['fullName']) . '" target="_blank"><img src="' . sprintf('https://coveralls.io/repos/github/%s/badge.svg?branch=master',
                         $repo['fullName']) . '" alt="Coverage Status"></a></div>';
             } else {
                 $html[] = '<div class="col-xl"></div>';
