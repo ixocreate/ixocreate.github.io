@@ -274,8 +274,10 @@ $builder-&gt;create(AudioElement::class, 'name')
     -&gt;withDescription(&quot;Description&quot;)
     -&gt;withRequired(true)
     -&gt;withDisabled(false)
-</code></pre>
-                            <img src="../../img/schema/audio.png" alt="Audio">
+</code>
+<img src="../../img/schema/audio.png" alt="Audio" width="855">
+</pre>
+
 
 <h2 id="block">Block</h2>
 <pre><code class="php">use Ixocreate\Schema\BuilderInterface;
@@ -285,7 +287,9 @@ use Ixocreate\Schema\Elements\BlockContainerElement;
 $builder-&gt;create(BlockContainerElement::class, 'name')
     -&gt;withBlocks(['block1', 'block2'])
     -&gt;withLimit(1)
-</code></pre>
+</code>
+<img src="../../img/schema/block.png" alt="Audio" width="855">
+</pre>
 
 <h2 id="checkbox">Checkbox</h2>
 <pre><code class="php">use Ixocreate\Schema\BuilderInterface;
@@ -297,7 +301,9 @@ $builder-&gt;create(CheckboxElement::class, 'name')
     -&gt;withDescription(&quot;Description&quot;)
     -&gt;withRequired(true)
     -&gt;withDisabled(false)
-</code></pre>
+</code>
+<img src="../../img/schema/checkbox.png" alt="Audio" width="855">
+</pre>
 
 <h2 id="collection">Collection</h2>
 <pre><code class="php">use Ixocreate\Schema\BuilderInterface;
@@ -329,7 +335,9 @@ $builder-&gt;create(CollectionElement::class, 'name')
                         -&gt;withLabel('Text')
                )
     )
-</code></pre>
+</code>
+<img src="../../img/schema/Collection.png" alt="Audio" width="855">
+</pre>
 
 <h2 id="color">Color</h2>
 <pre><code class="php">use Ixocreate\Schema\BuilderInterface;
@@ -341,7 +349,9 @@ $builder-&gt;create(ColorElement::class, 'name')
     -&gt;withDescription(&quot;Description&quot;)
     -&gt;withRequired(true)
     -&gt;withDisabled(false)
-</code></pre>
+</code>
+<img src="../../img/schema/color.png" alt="Audio" width="855">
+</pre>
 
 <h2 id="date">Date</h2>
 <pre><code class="php">use Ixocreate\Schema\BuilderInterface;
@@ -353,7 +363,9 @@ $builder-&gt;create(DateElement::class, 'name')
     -&gt;withDescription(&quot;Description&quot;)
     -&gt;withRequired(true)
     -&gt;withDisabled(false)
-</code></pre>
+</code>
+<img src="../../img/schema/date.png" alt="Audio" width="855">
+</pre>
 
 <h2 id="datetime">DateTime</h2>
 <pre><code class="php">use Ixocreate\Schema\BuilderInterface;
@@ -365,7 +377,9 @@ $builder-&gt;create(DateTimeElement::class, 'name')
     -&gt;withDescription(&quot;Description&quot;)
     -&gt;withRequired(true)
     -&gt;withDisabled(false)
-</code></pre>
+</code>
+<img src="../../img/schema/dateTime.png" alt="Audio" width="855">
+</pre>
 
 <h2 id="group">Group</h2>
 
@@ -380,7 +394,9 @@ $builder-&gt;create(DocumentElement::class, 'name')
     -&gt;withDescription(&quot;Description&quot;)
     -&gt;withRequired(true)
     -&gt;withDisabled(false)
-</code></pre>
+</code>
+<img src="../../img/schema/document.png" alt="Audio" width="855">
+</pre>
 
 <h2 id="html">Html</h2>
 <pre><code class="php">use Ixocreate\Schema\BuilderInterface;
@@ -392,7 +408,9 @@ $builder->create(HtmlElement::class, 'name')
     ->withDescription("Description")
     ->withRequired(true)
     ->withDisabled(false)
-</code></pre>
+</code>
+<img src="../../img/schema/html.png" alt="Audio" width="855">
+</pre>
 
 <h2 id="image">Image</h2>
 <pre><code class="php">use Ixocreate\Schema\BuilderInterface;
@@ -404,7 +422,9 @@ $builder->create(ImageElement::class, 'name')
     ->withDescription("Description")
     ->withRequired(true)
     ->withDisabled(false)
-</code></pre>
+</code>
+<img src="../../img/schema/image.png" alt="Audio" width="855">
+</pre>
 
 <h2 id="link">Link</h2>
 <pre><code class="php">use Ixocreate\Schema\BuilderInterface;
@@ -416,7 +436,9 @@ $builder->create(LinkElement::class, 'name')
     ->withDescription("Description")
     ->withRequired(true)
     ->withDisabled(false)
-</code></pre>
+</code>
+<img src="../../img/schema/link.png" alt="Audio" width="855">
+</pre>
 
 <h2 id="map">Map</h2>
 <pre><code class="php">use Ixocreate\Schema\BuilderInterface;
@@ -428,7 +450,9 @@ $builder->create(MapElement::class, 'name')
     ->withDescription("Description")
     ->withRequired(true)
     ->withDisabled(false)
-</code></pre>
+</code>
+<img src="../../img/schema/map.png" alt="Audio" width="855">
+</pre>
 
 <h2 id="media">Media</h2>
 <pre><code class="php">use Ixocreate\Schema\BuilderInterface;
@@ -440,13 +464,39 @@ $builder->create(MediaElement::class, 'name')
     ->withDescription("Description")
     ->withRequired(true)
     ->withDisabled(false)
-</code></pre>
+</code>
+<img src="../../img/schema/media.png" alt="Audio" width="855">
+</pre>
 
 <h2 id="multicheckbox">Multicheckbox</h2>
+<pre><code class="php">use Ixocreate\Schema\BuilderInterface;
+use Ixocreate\Schema\Elements\MultiCheckboxElement;
 
+/** @var BuilderInterface $builder */
+$builder->create(MultiCheckboxElement::class, 'name')
+    ->withLabel("Multicheckbox")
+    ->withDescription("Description")
+    ->withOptions(['option1' => '1', 'option2' => '2'])
+    ->withRequired(true)
+    ->withDisabled(false)
+</code>
+<img src="../../img/schema/multicheckbox.png" alt="Audio" width="855">
+</pre>
 
 <h2 id="multiselect">Multiselect</h2>
+<pre><code class="php">use Ixocreate\Schema\BuilderInterface;
+use Ixocreate\Schema\Elements\MultiCheckboxElement;
 
+/** @var BuilderInterface $builder */
+$builder->create(MultiSelectElement::class, 'name')
+    ->withLabel("Multiselect")
+    ->withDescription("Description")
+    ->withOptions(['option1' => '1', 'option2' => '2'])
+    ->withRequired(true)
+    ->withDisabled(false)
+</code>
+<img src="../../img/schema/multiselect.png" alt="Audio" width="855">
+</pre>
 
 <h2 id="number">Number</h2>
 <pre><code class="php">use Ixocreate\Schema\BuilderInterface;
@@ -458,7 +508,9 @@ $builder->create(NumberElement::class, 'name')
     ->withDescription("Description")
     ->withRequired(true)
     ->withDisabled(false)
-</code></pre>
+</code>
+<img src="../../img/schema/number.png" alt="Audio" width="855">
+</pre>
 
 <h2 id="price">Price</h2>
 <pre><code class="php">use Ixocreate\Schema\BuilderInterface;
@@ -470,12 +522,43 @@ $builder->create(PriceElement::class, 'name')
     ->withDescription("Description")
     ->withRequired(true)
     ->withDisabled(false)
-</code></pre>
+</code>
+<img src="../../img/schema/price.png" alt="Audio" width="855">
+</pre>
 
 <h2 id="radio">Radio</h2>
+<pre><code class="php">use Ixocreate\Schema\BuilderInterface;
+use Ixocreate\Schema\Elements\RadioElement;
+
+/** @var BuilderInterface $builder */
+$builder->create(RadioElement::class, 'name')
+    ->withLabel("radio")
+    ->withDescription("Description")
+    ->withOptions(['option1' => '1', 'option2' => '2'])
+    ->withRequired(true)
+    ->withDisabled(false)
+</code>
+<img src="../../img/schema/radio.png" alt="Audio" width="855">
+</pre>
+
 <h2 id="schema">Schema</h2>
 <h2 id="section">Section</h2>
+
 <h2 id="select">Select</h2>
+<pre><code class="php">use Ixocreate\Schema\BuilderInterface;
+use Ixocreate\Schema\Elements\RadioElement;
+
+/** @var BuilderInterface $builder */
+$builder->create(SelectElement::class, 'name')
+    ->withLabel("select")
+    ->withDescription("Description")
+    ->withOptions(['option1' => '1', 'option2' => '2'])
+    ->withRequired(true)
+    ->withDisabled(false)
+</code>
+<img src="../../img/schema/select.png" alt="Audio" width="855">
+</pre>
+
 <h2 id="tabbed-groups">Tabbed Groups</h2>
 
 <h2 id="textarea">Textarea</h2>
@@ -488,7 +571,9 @@ $builder->create(TextareaElement::class, 'name')
     ->withDescription("Description")
     ->withRequired(true)
     ->withDisabled(false)
-</code></pre>
+</code>
+<img src="../../img/schema/textarea.png" alt="Audio" width="855">
+</pre>
 
 <h2 id="text">Text</h2>
 <pre><code class="php">use Ixocreate\Schema\BuilderInterface;
@@ -500,7 +585,9 @@ $builder->create(TextElement::class, 'name')
     ->withDescription("Description")
     ->withRequired(true)
     ->withDisabled(false)
-</code></pre>
+</code>
+<img src="../../img/schema/text.png" alt="Audio" width="855">
+</pre>
 
 <h2 id="video">Video</h2>
 <pre><code class="php">use Ixocreate\Schema\BuilderInterface;
@@ -512,7 +599,9 @@ $builder->create(VideoElement::class, 'name')
     ->withDescription("Description")
     ->withRequired(true)
     ->withDisabled(false)
-</code></pre>
+</code>
+<img src="../../img/schema/video.png" alt="Audio" width="855">
+</pre>
 
 <h2 id="youtube">YouTube</h2>
 <pre><code class="php">use Ixocreate\Schema\BuilderInterface;
@@ -524,7 +613,9 @@ $builder->create(YouTubeElement::class, 'name')
     ->withDescription("Description")
     ->withRequired(true)
     ->withDisabled(false)
-</code></pre>
+</code>
+<img src="../../img/schema/youtube.png" alt="Audio" width="855">
+</pre>
 
 
 <h1 id="list-schema">List Schema</h1>
