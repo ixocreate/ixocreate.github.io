@@ -472,25 +472,46 @@ $builder->create(PriceElement::class, 'name')
 </code></pre>
 
 <h2 id="radio">Radio</h2>
+<h2 id="schema">Schema</h2>
+<h2 id="section">Section</h2>
+<h2 id="select">Select</h2>
+<h2 id="tabbed-groups">Tabbed Groups</h2>
+
+<h2 id="textarea">Textarea</h2>
 <pre><code class="php">use Ixocreate\Schema\BuilderInterface;
-use Ixocreate\Schema\Elements\NumberElement;
+use Ixocreate\Schema\Elements\TextareaElement;
 
 /** @var BuilderInterface $builder */
-$builder->create(PriceElement::class, 'name')
-    ->withLabel("Price")
+$builder->create(TextareaElement::class, 'name')
+    ->withLabel("Text")
     ->withDescription("Description")
     ->withRequired(true)
     ->withDisabled(false)
 </code></pre>
 
-
-<h2 id="schema">Schema</h2>
-<h2 id="section">Section</h2>
-<h2 id="select">Select</h2>
-<h2 id="tabbed-groups">Tabbed Groups</h2>
-<h2 id="textarea">Textarea</h2>
 <h2 id="text">Text</h2>
+<pre><code class="php">use Ixocreate\Schema\BuilderInterface;
+use Ixocreate\Schema\Elements\TextElement;
+
+/** @var BuilderInterface $builder */
+$builder->create(TextElement::class, 'name')
+    ->withLabel("Text")
+    ->withDescription("Description")
+    ->withRequired(true)
+    ->withDisabled(false)
+</code></pre>
+
 <h2 id="video">Video</h2>
+<pre><code class="php">use Ixocreate\Schema\BuilderInterface;
+use Ixocreate\Schema\Elements\VideoElement;
+
+/** @var BuilderInterface $builder */
+$builder->create(VideoElement::class, 'name')
+    ->withLabel("Video")
+    ->withDescription("Description")
+    ->withRequired(true)
+    ->withDisabled(false)
+</code></pre>
 
 <h2 id="youtube">YouTube</h2>
 <pre><code class="php">use Ixocreate\Schema\BuilderInterface;
