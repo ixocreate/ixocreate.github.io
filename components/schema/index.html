@@ -366,6 +366,8 @@ $builder-&gt;create(DateTimeElement::class, 'name')
     -&gt;withDisabled(false)
 </code></pre>
 
+<h2 id="group">Group</h2>
+
 <h2 id="document">Document</h2>
 <pre><code class="php">use Ixocreate\Schema\BuilderInterface;
 use Ixocreate\Schema\Elements\DocumentElement;
@@ -378,11 +380,54 @@ $builder-&gt;create(DocumentElement::class, 'name')
     -&gt;withDisabled(false)
 </code></pre>
 
-<h2 id="group">Group</h2>
 <h2 id="html">Html</h2>
+<pre><code class="php">use Ixocreate\Schema\BuilderInterface;
+use Ixocreate\Schema\Elements\HtmlElement;
+
+/** @var BuilderInterface $builder */
+$builder->create(HtmlElement::class, 'name')
+    ->withLabel("Text")
+    ->withDescription("Description")
+    ->withRequired(true)
+    ->withDisabled(false)
+</code></pre>
+
 <h2 id="image">Image</h2>
+<pre><code class="php">use Ixocreate\Schema\BuilderInterface;
+use Ixocreate\Schema\Elements\ImageElement;
+
+/** @var BuilderInterface $builder */
+$builder->create(ImageElement::class, 'name')
+    ->withLabel("Image")
+    ->withDescription("Description")
+    ->withRequired(true)
+    ->withDisabled(false)
+</code></pre>
+
 <h2 id="link">Link</h2>
+<pre><code class="php">use Ixocreate\Schema\BuilderInterface;
+use Ixocreate\Schema\Elements\LinkElement;
+
+/** @var BuilderInterface $builder */
+$builder->create(LinkElement::class, 'name')
+    ->withLabel("Link")
+    ->withDescription("Description")
+    ->withRequired(true)
+    ->withDisabled(false)
+</code></pre>
+
 <h2 id="map">Map</h2>
+<pre><code class="php">use Ixocreate\Schema\BuilderInterface;
+use Ixocreate\Schema\Elements\MapElement;
+
+/** @var BuilderInterface $builder */
+$builder->create(MapElement::class, 'name')
+    ->withLabel("Map")
+    ->withDescription("Description")
+    ->withRequired(true)
+    ->withDisabled(false)
+</code></pre>
+
 <h2 id="media">Media</h2>
 <h2 id="multicheckbox">Multicheckbox</h2>
 <h2 id="multiselect">Multiselect</h2>
@@ -504,7 +549,7 @@ $builder-&gt;create(DocumentElement::class, 'name')
             <li class="nav-item pl-3">
                 <a href="#youtube" class="nav-link">YouTube</a>
             </li>
-            <li class="nav-item pl-3">
+            <li class="nav-item pl-0">
                 <a class="nav-link" href="#list-schema">List Schema</a>
             </li>
             <li class="nav-item pl-3">
