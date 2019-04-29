@@ -368,6 +368,7 @@ $builder-&gt;create(DateTimeElement::class, 'name')
 
 <h2 id="group">Group</h2>
 
+
 <h2 id="document">Document</h2>
 <pre><code class="php">use Ixocreate\Schema\BuilderInterface;
 use Ixocreate\Schema\Elements\DocumentElement;
@@ -429,11 +430,60 @@ $builder->create(MapElement::class, 'name')
 </code></pre>
 
 <h2 id="media">Media</h2>
+<pre><code class="php">use Ixocreate\Schema\BuilderInterface;
+use Ixocreate\Schema\Elements\MediaElement;
+
+/** @var BuilderInterface $builder */
+$builder->create(MediaElement::class, 'name')
+    ->withLabel("Media")
+    ->withDescription("Description")
+    ->withRequired(true)
+    ->withDisabled(false)
+</code></pre>
+
 <h2 id="multicheckbox">Multicheckbox</h2>
+
+
 <h2 id="multiselect">Multiselect</h2>
+
+
 <h2 id="number">Number</h2>
+<pre><code class="php">use Ixocreate\Schema\BuilderInterface;
+use Ixocreate\Schema\Elements\NumberElement;
+
+/** @var BuilderInterface $builder */
+$builder->create(NumberElement::class, 'name')
+    ->withLabel("Number")
+    ->withDescription("Description")
+    ->withRequired(true)
+    ->withDisabled(false)
+</code></pre>
+
 <h2 id="price">Price</h2>
+<pre><code class="php">use Ixocreate\Schema\BuilderInterface;
+use Ixocreate\Schema\Elements\NumberElement;
+
+/** @var BuilderInterface $builder */
+$builder->create(PriceElement::class, 'name')
+    ->withLabel("Price")
+    ->withDescription("Description")
+    ->withRequired(true)
+    ->withDisabled(false)
+</code></pre>
+
 <h2 id="radio">Radio</h2>
+<pre><code class="php">use Ixocreate\Schema\BuilderInterface;
+use Ixocreate\Schema\Elements\NumberElement;
+
+/** @var BuilderInterface $builder */
+$builder->create(PriceElement::class, 'name')
+    ->withLabel("Price")
+    ->withDescription("Description")
+    ->withRequired(true)
+    ->withDisabled(false)
+</code></pre>
+
+
 <h2 id="schema">Schema</h2>
 <h2 id="section">Section</h2>
 <h2 id="select">Select</h2>
@@ -441,7 +491,20 @@ $builder->create(MapElement::class, 'name')
 <h2 id="textarea">Textarea</h2>
 <h2 id="text">Text</h2>
 <h2 id="video">Video</h2>
+
 <h2 id="youtube">YouTube</h2>
+<pre><code class="php">use Ixocreate\Schema\BuilderInterface;
+use Ixocreate\Schema\Elements\YouTubeElement;
+
+/** @var BuilderInterface $builder */
+$builder->create(YouTubeElement::class, 'name')
+    ->withLabel("YouTube")
+    ->withDescription("Description")
+    ->withRequired(true)
+    ->withDisabled(false)
+</code></pre>
+
+
 <h1 id="list-schema">List Schema</h1>
 <h2 id="checkbox_1">Checkbox</h2>
 <h2 id="date_1">Date</h2>
