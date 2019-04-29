@@ -283,7 +283,7 @@ use Ixocreate\Schema\Elements\BlockContainerElement;
 /** @var BuilderInterface $builder */
 $builder-&gt;create(BlockContainerElement::class, 'name')
     -&gt;withBlocks(['block1', 'block2'])
-    -&gt;withLimit(1);
+    -&gt;withLimit(1)
 </code></pre>
 
 <h2 id="checkbox">Checkbox</h2>
@@ -327,7 +327,7 @@ $builder-&gt;create(CollectionElement::class, 'name')
                     $builder-&gt;create(TextElement::class, 'text')
                         -&gt;withLabel('Text')
                )
-    );
+    )
 </code></pre>
 
 <h2 id="color">Color</h2>
@@ -348,7 +348,7 @@ use Ixocreate\Schema\Elements\DateElement;
 
 /** @var BuilderInterface $builder */
 $builder-&gt;create(DateElement::class, 'name')
-    -&gt;withLabel(&quot;Title&quot;)
+    -&gt;withLabel(&quot;Date&quot;)
     -&gt;withDescription(&quot;Description&quot;)
     -&gt;withRequired(true)
     -&gt;withDisabled(false)
@@ -360,7 +360,7 @@ use Ixocreate\Schema\Elements\DateTimeElement;
 
 /** @var BuilderInterface $builder */
 $builder-&gt;create(DateTimeElement::class, 'name')
-    -&gt;withLabel(&quot;Title&quot;)
+    -&gt;withLabel(&quot;DateTime&quot;)
     -&gt;withDescription(&quot;Description&quot;)
     -&gt;withRequired(true)
     -&gt;withDisabled(false)
@@ -504,7 +504,7 @@ $builder-&gt;create(DocumentElement::class, 'name')
             <li class="nav-item pl-3">
                 <a href="#youtube" class="nav-link">YouTube</a>
             </li>
-            <li class="nav-item pl-0">
+            <li class="nav-item pl-3">
                 <a class="nav-link" href="#list-schema">List Schema</a>
             </li>
             <li class="nav-item pl-3">
