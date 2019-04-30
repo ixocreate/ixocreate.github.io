@@ -560,6 +560,21 @@ $builder->create(SelectElement::class, 'name')
 </pre>
 
 <h2 id="tabbed-groups">Tabbed Groups</h2>
+<pre><code class="php">use Ixocreate\Schema\BuilderInterface;
+use Ixocreate\Schema\Elements\TabbedGroupElement;
+
+/** @var BuilderInterface $builder */
+$builder->create(TabbedGroupElement::class, 'name')
+    ->withLabel("TabbedGroup")
+    ->withElements([
+    $builder->create(GroupElement::class, 'Tabb1')
+            ->withLabel("Tabb One"),
+    $builder->create(GroupElement::class, 'Tabb2')
+            ->withLabel("Tabb Two")
+            ])
+</code>
+<img src="../../img/schema/tabbedGroup.png" alt="Select" width="855">
+</pre>
 
 <h2 id="textarea">Textarea</h2>
 <pre><code class="php">use Ixocreate\Schema\BuilderInterface;
