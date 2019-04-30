@@ -542,7 +542,22 @@ $builder->create(RadioElement::class, 'name')
 </pre>
 
 <h2 id="schema">Schema</h2>
+
 <h2 id="section">Section</h2>
+<pre><code class="php">use Ixocreate\Schema\BuilderInterface;
+use Ixocreate\Schema\Elements\RadioElement;
+
+/** @var BuilderInterface $builder */
+$builder->create( SectionElement::class, 'name')
+    ->withLabel("Title")
+    ->withElements([
+    $builder->create(TextElement::class, 'Text')
+        ->withLabel("Text"),
+    $builder->create(ImageElement::class, 'Image')
+        ->withLabel("Image")
+</code>
+<img src="../../img/schema/section.png" alt="Select" width="855">
+</pre>
 
 <h2 id="select">Select</h2>
 <pre><code class="php">use Ixocreate\Schema\BuilderInterface;
