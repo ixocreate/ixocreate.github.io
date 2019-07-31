@@ -1,4 +1,7 @@
 @mixin grayscale {
+  -webkit-transform: translateZ(0);
+  -webkit-perspective: 1000px;
+  -webkit-backface-visibility: hidden;
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
 }
@@ -13,13 +16,15 @@
   $brand-primary-dark: map-get($data, dark);
   $brand-primary-light: map-get($data, light);
   $brand-logo-width-ratio: map-get($data, logo-width-ratio);
-  $brand-logo: url('../img/#{$brand}/#{$brand}-logo.svg');
-  $brand-icon: url('../img/#{$brand}/#{$brand}-icon.svg');
+  $brand-logo: url('../img/brand/#{$brand}/#{$brand}-logo.png');
+  $brand-icon: url('../img/brand/#{$brand}/#{$brand}-icon.svg');
   $cta-bg: url('../img/brand/#{$brand}/#{$brand}-bg-1.svg');
 
   .navbar-brand {
     height: 40px;
     width: 40px * $brand-logo-width-ratio + 20px;
+    display: flex;
+    align-items: center;
 
     @include media-breakpoint-down(xs) {
       height: 35px;
@@ -37,6 +42,27 @@
     }
   }
 
+  .switch input:checked+.slider-container .slider {
+    background-color: $brand-primary-dark;
+  }
+
+  .page-content {
+    .page-bg {
+      @media screen and (min-width: 1650px) {
+        background: url('../img/brand/#{$brand}/#{$brand}-bg-4.png') center -100px repeat-y;
+      }
+    }
+
+    .page-bg.show {
+      &:before {
+        background-image: url('../img/brand/#{$brand}/#{$brand}-icon-bg.png');
+      }
+      &:after {
+        background-image: url('../img/brand/#{$brand}/#{$brand}-icon-bg.png');
+      }
+    }
+  }
+
   &.is-scrolled .navbar-brand-logo {
     width: 35px * $brand-logo-width-ratio;
   }
@@ -51,6 +77,10 @@
 
   .bg-primary {
     background: $brand-primary-dark !important;
+  }
+
+  .highlighted-title{
+    background-color: rgba($brand-primary-dark, .6);
   }
 
   .bg-gradient-primary {
@@ -137,7 +167,7 @@
   .navbar-brand-logo {
     background-repeat: no-repeat;
     background-size: contain;
-    background-position: top left;
+    background-position: center left;
   }
 
   .main-nav {
@@ -186,8 +216,8 @@
 
   .page-hero {
     &.bg-color {
-      background-color: $gray-5;
-      @include gradient-x($gray-5, $gray-4);
+      background-color: $brand-primary-dark;
+      @include gradient-x($brand-primary-dark, $brand-primary-light);
     }
   }
 
@@ -199,6 +229,15 @@
       .section-title-sm {
         color: $brand-primary-dark;
       }
+    }
+  }
+
+  .locale-link {
+    font-weight: $font-weight-bold;
+
+    &:hover {
+      color: $white;
+      background: $brand-primary-dark;
     }
   }
 

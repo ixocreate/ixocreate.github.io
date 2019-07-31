@@ -1,29 +1,49 @@
 //custom variables go here
 
 $brands: (
-  ixocreate: (
-    light: #90d431,
-    dark: #50a000,
-    logo-width-ratio: 8.125
-  ),
+        ixocare: (
+                light: #ffc61b,
+                dark: #e68200,
+                logo-width-ratio: 6.9,
+        ),
+        ixocreate: (
+                light: #90d431,
+                dark: #50a000,
+                logo-width-ratio: 8.125
+        ),
+        ixolit: (
+                light: #dc283c,
+                dark: #a01428,
+                logo-width-ratio: 5,
+        ),
+        ixopay: (
+                light: #b32ec4,
+                dark: #783282,
+                logo-width-ratio: 5.6,
+        ),
+        ixoplan: (
+                light: #2db8ff,
+                dark: #0078dc,
+                logo-width-ratio: 6.425,
+        )
 );
 
 $grid-breakpoints: (
-  xs: 0,
-  sm: 576px,
-  md: 768px,
-  lg: 992px,
-  xl: 1200px,
-  xxl: 1600px
+        xs: 0,
+        sm: 576px,
+        md: 768px,
+        lg: 992px,
+        xl: 1200px,
+        xxl: 1350px
 );
 $grid-gutter-width: 30px;
 
 $container-max-widths: (
-  sm: 540px,
-  md: 720px,
-  lg: 960px,
-  xl: 1140px,
-  xxl: 1510px
+        sm: 540px,
+        md: 720px,
+        lg: 960px,
+        xl: 1140px,
+        xxl: 1250px
 );
 
 $yiq-contrasted-threshold: 200;
@@ -33,10 +53,10 @@ $spacer: 15px;
 $max-content-width: 640px;
 $max-content-width-lg: 1080px;
 
-$primary: #a01428;
-$danger: #dc283c;
-$success: #90d431;
-$warning: #ffc61b;
+$primary: map-get(map-get($brands, ixolit), dark);
+$danger: map-get(map-get($brands, ixolit), light);
+$success: map-get(map-get($brands, ixocreate), light);
+$warning: map-get(map-get($brands, ixocare), light);
 
 $small-font-size: .85rem;
 
@@ -66,8 +86,8 @@ $btn-padding-y: 4px;
 $btn-line-height: 40px;
 $btn-font-weight: $font-weight-bold;
 
-$content-padding-x: 90px;
-$content-padding-x-sm: 45px;
+$content-padding-x: 40px;
+$content-padding-x-sm: 40px;
 $content-padding-x-xs: $grid-gutter-width / 2;
 
 $navbar-brand-padding-y: 0;
@@ -103,3 +123,8 @@ $breadcrumb-divider: ' | ';
 $breadcrumb-margin-bottom: 0;
 $breadcrumb-padding-x: 0;
 $breadcrumb-padding-y: 0;
+
+$alert-bg-level: 0;
+$alert-border-level: 0;
+$alert-border-radius: 0;
+$alert-color-level: 10;

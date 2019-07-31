@@ -5,7 +5,14 @@
 @import "page";
 
 @each $brand, $data in $brands {
-  body.brand-#{$brand} {
-    @include page-color($brand, $data);
+  @if $brand == 'ixolit' {
+    body {
+      @include page-color($brand, $data);
+    }
+  } @else {
+    body.brand-#{$brand} {
+      @include page-color($brand, $data);
+    }
   }
 }
+

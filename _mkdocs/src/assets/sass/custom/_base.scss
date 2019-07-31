@@ -1,10 +1,36 @@
+html{
+  background: $white;
+  overflow-x: hidden;
+}
+
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: $white;
+  overflow-x:hidden;
+}
+
+img:not([src]) {
+  visibility: hidden;
+}
+
+img[data-src],
+img[data-srcset] {
+  display: block;
+  min-height: 1px;
+}
+
+.modal {
+  -webkit-overflow-scrolling: touch;
 }
 
 p {
   line-height: 1.7em;
+}
+
+.alert {
+  color: $white;
+  border: 1px solid $white;
 }
 
 @include media-breakpoint-down(xs) {
@@ -77,6 +103,10 @@ p {
 
 .section-margin {
   margin-bottom: 70px;
+}
+
+.section-padding {
+  padding-bottom: 70px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -274,10 +304,47 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-.toc-sidenav {
-  width: 100%;
+.text-inherit {
+  color: inherit;
+}
 
-  .nav-link {
-    padding: .1rem 1rem!important;
+.slick-dots-bars {
+  position: relative;
+  z-index: 10;
+  $bar-width: 50px;
+
+  .slick-dots {
+    top: 5px;
+    bottom: auto;
+
+    li {
+      width: $bar-width;
+      height: 5px;
+      position: relative;
+
+      button {
+        width: $bar-width;
+        height: 1px;
+        padding: 0;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        &:before {
+          opacity: 1;
+          content: '';
+          width: 50px;
+          height: 1px;
+          background: $white;
+        }
+      }
+
+      &.slick-active button {
+        &,
+        &:before {
+          height: 5px;
+        }
+      }
+    }
   }
 }
