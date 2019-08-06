@@ -1,0 +1,1 @@
+exclude: ["_mkdocs/", "README.md", "LICENSE", "build"]

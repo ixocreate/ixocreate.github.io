@@ -1,6 +1,6 @@
 site_name: IXOCREATE
 docs_dir: 'docs/'
-site_dir: '../_site'
+site_dir: '../current'
 theme:
   name: null
   custom_dir: 'ixocreate_theme/'
