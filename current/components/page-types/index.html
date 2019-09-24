@@ -69,7 +69,6 @@
                     <a class="mega-nav-link" href="../../getting-started/directory-structure/">Directory Structure</a>
                     <a class="mega-nav-link" href="../../getting-started/block/">Create Blocks</a>
                     <a class="mega-nav-link" href="../../getting-started/page-type/">Create Page-Types</a>
-                    <a class="mega-nav-link" href="../../getting-started/template/">Templates</a>
                 </div>
             </div>
             <div class="col-4">
@@ -95,64 +94,6 @@
                     <a class="mega-nav-link" href="../schema/">Schema</a>
                     <a class="mega-nav-link active" href="./">Page Types</a>
                     <a class="mega-nav-link" href="../blocks/">Blocks</a>
-                    <a class="mega-nav-link" href="../resources/">Resources</a>
-                    <a class="mega-nav-link" href="../servicemanager/">Servicemanager</a>
-                    <a class="mega-nav-link" href="../collection/">Collection</a>
-                    <a class="mega-nav-link" href="../command-bus/">Command Bus</a>
-                    <a class="mega-nav-link" href="../cache/">Cache</a>
-                    <a class="mega-nav-link" href="../events/">Events</a>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="mega-nav-contact-box bg-gradient-primary">
-                    <div class="mb-4">
-                        Business
-                    </div>
-                    <a href="https://www.ixocreate.com" target="_blank" class="btn btn-outline-light">Business</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    </li>
-    <li class="nav-item dropdown">
-    <a class="nav-link nav-link-animate" href="#" role="button" data-toggle="dropdown">Guides <i class="fas fa-chevron-down arrow"></i></a>
-    <div class="dropdown-menu">
-        <div class="row no-gutters">
-            <div class="col-4">
-
-            </div>
-            <div class="col-4">
-                <div class="p-3 py-4">
-                    <a class="mega-nav-link" href="../../guides/configuration/">Configuration</a>
-                    <a class="mega-nav-link" href="../../guides/cli/">Command Line</a>
-                    <a class="mega-nav-link" href="../../guides/performance/">Performance</a>
-                    <a class="mega-nav-link" href="../../guides/deployment/">Deployment</a>
-                    <a class="mega-nav-link" href="../../guides/packages/">Packages</a>
-                    <a class="mega-nav-link" href="../../guides/custom-admin/">Custom admin</a>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="mega-nav-contact-box bg-gradient-primary">
-                    <div class="mb-4">
-                        Business
-                    </div>
-                    <a href="https://www.ixocreate.com" target="_blank" class="btn btn-outline-light">Business</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    </li>
-    <li class="nav-item dropdown">
-    <a class="nav-link nav-link-animate" href="#" role="button" data-toggle="dropdown">Concept <i class="fas fa-chevron-down arrow"></i></a>
-    <div class="dropdown-menu">
-        <div class="row no-gutters">
-            <div class="col-4">
-
-            </div>
-            <div class="col-4">
-                <div class="p-3 py-4">
-                    <a class="mega-nav-link" href="../../concept/request-lifecycle/">Request Lifecycle</a>
-                    <a class="mega-nav-link" href="../../concept/types/">Types</a>
                 </div>
             </div>
             <div class="col-4">
@@ -186,7 +127,6 @@
         <a class="dropdown-item" href="../../getting-started/directory-structure/">Directory Structure</a>
         <a class="dropdown-item" href="../../getting-started/block/">Create Blocks</a>
         <a class="dropdown-item" href="../../getting-started/page-type/">Create Page-Types</a>
-        <a class="dropdown-item" href="../../getting-started/template/">Templates</a>
     </div>
     </li>
     <li class="nav-item dropdown active">
@@ -195,30 +135,6 @@
         <a class="dropdown-item" href="../schema/">Schema</a>
         <a class="dropdown-item active" href="./">Page Types</a>
         <a class="dropdown-item" href="../blocks/">Blocks</a>
-        <a class="dropdown-item" href="../resources/">Resources</a>
-        <a class="dropdown-item" href="../servicemanager/">Servicemanager</a>
-        <a class="dropdown-item" href="../collection/">Collection</a>
-        <a class="dropdown-item" href="../command-bus/">Command Bus</a>
-        <a class="dropdown-item" href="../cache/">Cache</a>
-        <a class="dropdown-item" href="../events/">Events</a>
-    </div>
-    </li>
-    <li class="nav-item dropdown">
-    <a class="nav-link" href="#" role="button" data-toggle="dropdown">Guides <i class="fas fa-chevron-down arrow"></i></a>
-    <div class="dropdown-menu dropdown-menu-right">
-        <a class="dropdown-item" href="../../guides/configuration/">Configuration</a>
-        <a class="dropdown-item" href="../../guides/cli/">Command Line</a>
-        <a class="dropdown-item" href="../../guides/performance/">Performance</a>
-        <a class="dropdown-item" href="../../guides/deployment/">Deployment</a>
-        <a class="dropdown-item" href="../../guides/packages/">Packages</a>
-        <a class="dropdown-item" href="../../guides/custom-admin/">Custom admin</a>
-    </div>
-    </li>
-    <li class="nav-item dropdown">
-    <a class="nav-link" href="#" role="button" data-toggle="dropdown">Concept <i class="fas fa-chevron-down arrow"></i></a>
-    <div class="dropdown-menu dropdown-menu-right">
-        <a class="dropdown-item" href="../../concept/request-lifecycle/">Request Lifecycle</a>
-        <a class="dropdown-item" href="../../concept/types/">Types</a>
     </div>
     </li>
 </ul>
@@ -261,11 +177,134 @@
                         </div>
                         
                         <div class="main-content">
-                            
+                            <h1 id="introduction">Introduction</h1>
+<p>A PageType describes what kind of information an editor has or can provide and displays them on a corresponding template. 
+Moreover a PageTypes defines where a page can be located inside the sitemap tree. </p>
+<pre><code class="php">namespace Ixocreate\Cms\PageType;
+
+use Ixocreate\Schema\SchemaProviderInterface;
+use Ixocreate\ServiceManager\NamedServiceInterface;
+
+interface PageTypeInterface extends NamedServiceInterface, SchemaProviderInterface
+{
+    public function label(): string;
+
+    public function allowedChildren(): ?array;
+
+    public function template(): string;
+
+    /**
+     * inherited from NamedServiceInterface
+     */
+    public static function serviceName(): string;
+
+    /**
+     * inherited from SchemaProviderInterface
+     */
+    public function provideSchema($name, BuilderInterface $builder, $options = []): SchemaInterface;
+}
+</code></pre>
+
+<p>With the following interfaces you can change the default behaviour of a PageType or add extra functionality into them. </p>
+<h2 id="handlepagetypeinterface">HandlePageTypeInterface</h2>
+<p>Through <code>HandlePageTypeInterface</code> two things are achieved. First, the certain PageType can be used only once by the editor. 
+Second, you can access/find the corresponding <code>Page</code>, <code>Sitemap</code> and <code>PageContent</code> by using the unique <code>serviceName</code> from
+the PageType.  </p>
+<pre><code class="php">namespace Ixocreate\Cms\PageType;
+
+interface HandlePageTypeInterface
+{
+}
+</code></pre>
+
+<h2 id="middlewarepagetypeinterface">MiddlewarePageTypeInterface</h2>
+<p>In some situations it is needed to add some extra middleware layers before the requested page will be rendered.
+Through <code>MiddlewarePageTypeInterface</code> its possible to add a list of PSR15 Middlewares to be processed. For example a
+<code>AuthenticationMiddleware</code> could be added to check if the user is allowed to view the requested page.</p>
+<pre><code class="php">namespace Ixocreate\Cms\PageType;
+
+interface MiddlewarePageTypeInterface
+{
+    public function middleware(): array;
+}
+</code></pre>
+
+<h2 id="rootpagetypeinterface">RootPageTypeInterface</h2>
+<p>Some pages should be only be used as root of the sitemap. This restriction is especially useful in combination with other 
+PageType features like <code>RoutingAwareInterface</code>.</p>
+<pre><code class="php">namespace Ixocreate\Cms\PageType;
+
+interface RootPageTypeInterface extends PageTypeInterface
+{
+}
+</code></pre>
+
+<h2 id="routingawareinterface">RoutingAwareInterface</h2>
+<p>At some point the default routing behaviour isn't sufficient. With the <code>RoutingAwareInterface</code> its possible to alter the
+default behaviour. In background the Symfony Router is used (See the corresponding symfony documentation for more details 
+about the syntax). Next to the Symfony placeholder options for routing, IXOCREATE also offers some placeholders:</p>
+<ul>
+<li><code>${LANG}</code></li>
+<li><code>${LANG:no-default}</code></li>
+<li><code>${LANG:no-root-default}</code></li>
+<li><code>${REGION}</code></li>
+<li><code>${PARENT}</code></li>
+<li><code>${SLUG}</code></li>
+<li><code>${URI:&lt;applicationUriName&gt;}</code></li>
+</ul>
+<p>The default routing of <code>RootPageTypeInterface</code> is <code>/</code>, all other page types <code>${PARENT}/${SLUG}</code></p>
+<pre><code class="php">namespace Ixocreate\Cms\PageType;
+
+interface RoutingAwareInterface
+{
+    public function routing(): string;
+}
+</code></pre>
+
+<h2 id="terminalpagetypeinterface">TerminalPageTypeInterface</h2>
+<p>Implementing the <code>TerminalPageTypeInterface</code> excludes all children pages from the sitemap overview inside the administration
+interface.</p>
+<pre><code class="php">namespace Ixocreate\Cms\PageType;
+
+interface TerminalPageTypeInterface
+{
+}
+</code></pre>
                         </div>
                     </div>
                     <div class="col-md-4">
                         
+<div class="navbar-light navbar-expand-md hidden-print" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    <div id="toc-collapse" class="navbar-collapse collapse card">
+        <ul class="nav flex-column toc-sidenav p-2">
+            <li class="nav-item pl-0">
+                <a class="nav-link" href="#introduction">Introduction</a>
+            </li>
+            <li class="nav-item pl-3">
+                <a href="#handlepagetypeinterface" class="nav-link">HandlePageTypeInterface</a>
+            </li>
+            <li class="nav-item pl-3">
+                <a href="#middlewarepagetypeinterface" class="nav-link">MiddlewarePageTypeInterface</a>
+            </li>
+            <li class="nav-item pl-3">
+                <a href="#rootpagetypeinterface" class="nav-link">RootPageTypeInterface</a>
+            </li>
+            <li class="nav-item pl-3">
+                <a href="#routingawareinterface" class="nav-link">RoutingAwareInterface</a>
+            </li>
+            <li class="nav-item pl-3">
+                <a href="#terminalpagetypeinterface" class="nav-link">TerminalPageTypeInterface</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
                     </div>
                 </div>
                 

@@ -69,7 +69,6 @@
                     <a class="mega-nav-link" href="../../getting-started/directory-structure/">Directory Structure</a>
                     <a class="mega-nav-link" href="../../getting-started/block/">Create Blocks</a>
                     <a class="mega-nav-link" href="../../getting-started/page-type/">Create Page-Types</a>
-                    <a class="mega-nav-link" href="../../getting-started/template/">Templates</a>
                 </div>
             </div>
             <div class="col-4">
@@ -95,64 +94,6 @@
                     <a class="mega-nav-link" href="../schema/">Schema</a>
                     <a class="mega-nav-link" href="../page-types/">Page Types</a>
                     <a class="mega-nav-link active" href="./">Blocks</a>
-                    <a class="mega-nav-link" href="../resources/">Resources</a>
-                    <a class="mega-nav-link" href="../servicemanager/">Servicemanager</a>
-                    <a class="mega-nav-link" href="../collection/">Collection</a>
-                    <a class="mega-nav-link" href="../command-bus/">Command Bus</a>
-                    <a class="mega-nav-link" href="../cache/">Cache</a>
-                    <a class="mega-nav-link" href="../events/">Events</a>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="mega-nav-contact-box bg-gradient-primary">
-                    <div class="mb-4">
-                        Business
-                    </div>
-                    <a href="https://www.ixocreate.com" target="_blank" class="btn btn-outline-light">Business</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    </li>
-    <li class="nav-item dropdown">
-    <a class="nav-link nav-link-animate" href="#" role="button" data-toggle="dropdown">Guides <i class="fas fa-chevron-down arrow"></i></a>
-    <div class="dropdown-menu">
-        <div class="row no-gutters">
-            <div class="col-4">
-
-            </div>
-            <div class="col-4">
-                <div class="p-3 py-4">
-                    <a class="mega-nav-link" href="../../guides/configuration/">Configuration</a>
-                    <a class="mega-nav-link" href="../../guides/cli/">Command Line</a>
-                    <a class="mega-nav-link" href="../../guides/performance/">Performance</a>
-                    <a class="mega-nav-link" href="../../guides/deployment/">Deployment</a>
-                    <a class="mega-nav-link" href="../../guides/packages/">Packages</a>
-                    <a class="mega-nav-link" href="../../guides/custom-admin/">Custom admin</a>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="mega-nav-contact-box bg-gradient-primary">
-                    <div class="mb-4">
-                        Business
-                    </div>
-                    <a href="https://www.ixocreate.com" target="_blank" class="btn btn-outline-light">Business</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    </li>
-    <li class="nav-item dropdown">
-    <a class="nav-link nav-link-animate" href="#" role="button" data-toggle="dropdown">Concept <i class="fas fa-chevron-down arrow"></i></a>
-    <div class="dropdown-menu">
-        <div class="row no-gutters">
-            <div class="col-4">
-
-            </div>
-            <div class="col-4">
-                <div class="p-3 py-4">
-                    <a class="mega-nav-link" href="../../concept/request-lifecycle/">Request Lifecycle</a>
-                    <a class="mega-nav-link" href="../../concept/types/">Types</a>
                 </div>
             </div>
             <div class="col-4">
@@ -186,7 +127,6 @@
         <a class="dropdown-item" href="../../getting-started/directory-structure/">Directory Structure</a>
         <a class="dropdown-item" href="../../getting-started/block/">Create Blocks</a>
         <a class="dropdown-item" href="../../getting-started/page-type/">Create Page-Types</a>
-        <a class="dropdown-item" href="../../getting-started/template/">Templates</a>
     </div>
     </li>
     <li class="nav-item dropdown active">
@@ -195,30 +135,6 @@
         <a class="dropdown-item" href="../schema/">Schema</a>
         <a class="dropdown-item" href="../page-types/">Page Types</a>
         <a class="dropdown-item active" href="./">Blocks</a>
-        <a class="dropdown-item" href="../resources/">Resources</a>
-        <a class="dropdown-item" href="../servicemanager/">Servicemanager</a>
-        <a class="dropdown-item" href="../collection/">Collection</a>
-        <a class="dropdown-item" href="../command-bus/">Command Bus</a>
-        <a class="dropdown-item" href="../cache/">Cache</a>
-        <a class="dropdown-item" href="../events/">Events</a>
-    </div>
-    </li>
-    <li class="nav-item dropdown">
-    <a class="nav-link" href="#" role="button" data-toggle="dropdown">Guides <i class="fas fa-chevron-down arrow"></i></a>
-    <div class="dropdown-menu dropdown-menu-right">
-        <a class="dropdown-item" href="../../guides/configuration/">Configuration</a>
-        <a class="dropdown-item" href="../../guides/cli/">Command Line</a>
-        <a class="dropdown-item" href="../../guides/performance/">Performance</a>
-        <a class="dropdown-item" href="../../guides/deployment/">Deployment</a>
-        <a class="dropdown-item" href="../../guides/packages/">Packages</a>
-        <a class="dropdown-item" href="../../guides/custom-admin/">Custom admin</a>
-    </div>
-    </li>
-    <li class="nav-item dropdown">
-    <a class="nav-link" href="#" role="button" data-toggle="dropdown">Concept <i class="fas fa-chevron-down arrow"></i></a>
-    <div class="dropdown-menu dropdown-menu-right">
-        <a class="dropdown-item" href="../../concept/request-lifecycle/">Request Lifecycle</a>
-        <a class="dropdown-item" href="../../concept/types/">Types</a>
     </div>
     </li>
 </ul>
@@ -261,11 +177,68 @@
                         </div>
                         
                         <div class="main-content">
-                            
+                            <h1 id="introduction">Introduction</h1>
+<p>A block is an instance of a certain type of content and are usually used as SchemaElement inside a PageType. 
+Blocks provide their own schema and template - therefor they are reusable. </p>
+<p>In practice a developer provides a set of blocks like ordinary text, slideshows, galleries, contact forms etc. The editor
+can add them to the page as often he wants in any order he wants.</p>
+<pre><code class="php">namespace Ixocreate\Cms\Block;
+
+use Ixocreate\Schema\SchemaReceiverInterface;
+use Ixocreate\ServiceManager\NamedServiceInterface;
+
+interface BlockInterface extends NamedServiceInterface, SchemaReceiverInterface
+{
+    public function template(): string;
+
+    public function label(): string;
+
+    /**
+     * inherited from NamedServiceInterface
+     */
+    public static function serviceName(): string;
+
+    /**
+     * inherited from SchemaReceiverInterface
+     */
+    public function receiveSchema(BuilderInterface $builder, array $options = []): SchemaInterface;
+}
+</code></pre>
+
+<h2 id="nameexpressioninterface">NameExpressionInterface</h2>
+<p>On pages with several blocks added it might be useful to provide the editor extra help. With the <code>NameExpressionInterface</code>
+it is possible to name an instance of a block. This is possible with a static string or a placeholder. Placeholders declared
+with <code>%</code> for example <code>%title%</code>.</p>
+<pre><code class="php">namespace Ixocreate\Cms\Block;
+
+interface NameExpressionInterface
+{
+    public function nameExpression(): string;
+}
+</code></pre>
                         </div>
                     </div>
                     <div class="col-md-4">
                         
+<div class="navbar-light navbar-expand-md hidden-print" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    <div id="toc-collapse" class="navbar-collapse collapse card">
+        <ul class="nav flex-column toc-sidenav p-2">
+            <li class="nav-item pl-0">
+                <a class="nav-link" href="#introduction">Introduction</a>
+            </li>
+            <li class="nav-item pl-3">
+                <a href="#nameexpressioninterface" class="nav-link">NameExpressionInterface</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
                     </div>
                 </div>
                 
