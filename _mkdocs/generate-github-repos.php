@@ -16,8 +16,20 @@ final class GithubReposPageGenerator
         'admin-frontend',
     ];
 
+    private $noTests = [
+        'ixocreate',
+        'coding-standard',
+        'admin-frontend',
+        'test',
+    ];
+
     private $exclude = [
         'ixocreate.github.io',
+        'express-package',
+        'log',
+        'log-package',
+        'security-header',
+        'template-package',
     ];
 
     public function __construct()
@@ -206,11 +218,14 @@ final class GithubReposPageGenerator
                 $html[] = '<div class="col-xl"><a href="' . sprintf('https://travis-ci.com/%s/branches',
                         $repo['fullName']) . '" target="_blank"><img src="' . sprintf('https://travis-ci.com/%s.svg?branch=master',
                         $repo['fullName']) . '" alt="Build Status"></a></div>';
+            } else {
+                $html[] = '<div class="col-xl"></div>';
+            }
+            if (!in_array($repo['name'], $this->noTests)) {
                 $html[] = '<div class="col-xl"><a href="' . sprintf('https://coveralls.io/github/%s?branch=master',
                         $repo['fullName']) . '" target="_blank"><img src="' . sprintf('https://coveralls.io/repos/github/%s/badge.svg?branch=master',
                         $repo['fullName']) . '" alt="Coverage Status"></a></div>';
             } else {
-                $html[] = '<div class="col-xl"></div>';
                 $html[] = '<div class="col-xl"></div>';
             }
 
