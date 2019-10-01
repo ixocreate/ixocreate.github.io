@@ -29,7 +29,7 @@ final class GithubReposPageGenerator
         'log',
         'log-package',
         'security-header',
-        'template-package',
+        'package-template',
     ];
 
     public function __construct()
